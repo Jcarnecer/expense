@@ -31,19 +31,6 @@
 			<!-- <li><a  href="panels.html">Panels</a></li> -->
 		</ul>
 	</li>
-	<li class="sub-menu">
-		<a data-toggle="collapse" href="#UIElementsSub" aria-expanded="false" aria-controls="UIElementsSub" >
-			<i class="fa fa-desktop"></i>
-			<span>Expense</span>
-		</a>
-		<ul class="sub collapse" id="UIElementsSub">
-			<li><a  href="expense/reimbursement">Reimbursement</a></li>
-			<li><a  href="expense/request">Request</a></li>
-			<li><a  href="expense/classification">Classification</a></li>
-			<!-- <li><a  href="panels.html">Panels</a></li> -->
-		</ul>
-	</li>
-
 	<!-- <li class="">
 		<a class="" href="<?= base_url('users/logout'); ?>">
 			<i class="fa fa-dashboard"></i>
