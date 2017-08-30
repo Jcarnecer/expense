@@ -3,7 +3,7 @@
         <h3>Classification</h3>
         <div class="table-responsive">
         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#add_modal">Add Classification</button>
-            <table class="table table-bordered" id="classification-table">
+            <table class="table table-bordered exp-tbl" id="classification-table">
                 <thead>
                     <tr>
                         <th>ID</th>

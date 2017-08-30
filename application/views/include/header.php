@@ -13,6 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.min.css" >
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" >
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 		<script>
 			var base_url = window.location.origin+"/expense/";
 		</script>
@@ -34,5 +35,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					fetch_reimbursement();	
 				</script>
 			<?php } ?>
+
+			<script>
+				$(document).ready(function(){
+					$(".exp-tbl").DataTable();
+				})
+			</script>
 	</head>
 	<body>

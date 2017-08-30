@@ -2,7 +2,7 @@
 		<div class="container">
         <h3>Reimbursement</h3>
         <div class="table-responsive">
-            <table class="table table-bordered" id="request-table">
+            <table class="table table-bordered exp-tbl" id="request-table">
                 <thead>
                     <tr>
                         <th>ID</th>
