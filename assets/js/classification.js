@@ -4,7 +4,7 @@ function fetch_classify() {
         method: "POST",
         success: function(data) {
             $("#classification-data").html(data);
-            
+            $("#exptbl").DataTable();
         }
     })
 }

@@ -111,7 +111,7 @@ class Crud_model extends CI_Model{
 	}
 
 	public function join_reimburse_row($id){
-		$this->db->select('*');
+		$this->db->select('*,reimbursement.receipt_img as rimg');
 		$this->db->where('classification.id',$id);
 		$this->db->from('reimbursement');
 		$this->db->join('classification', 'reimbursement.classification_id = classification.id', 'inner');
@@ -123,14 +123,16 @@ class Crud_model extends CI_Model{
 		$this->db->select('*');
 		$this->db->where($where);
 		$this->db->from('reimbursement');
+		$this->db->order_by('reimbursement.created_at','desc');
 		$this->db->join('users', 'reimbursement.user_id = users.id', 'inner');
 		$query = $this->db->get();
 		return $query->row();
 	}
 
 	public function join_user_reimbursement_result() {
-		$this->db->select('*,reimbursement.id as rid, reimbursement.status as rstatus');
+		$this->db->select('*,reimbursement.id as rid, reimbursement.status as rstatus, reimbursement.created_at as rcreated_at');
 		$this->db->from('users');
+		$this->db->order_by('rcreated_at','desc');
 		$this->db->join('reimbursement', 'reimbursement.user_id = users.id', 'inner');
 		$query = $this->db->get();
 		return $query->result();

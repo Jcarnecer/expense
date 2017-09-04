@@ -2,12 +2,13 @@
 		<div class="container">
         <h3>Reimbursement</h3>
         <div class="table-responsive">
-            <table class="table table-bordered exp-tbl" id="request-table">
+            <table class="table table-bordered exp-tbl" id="exptbl">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Classification</th>
+                        <th>Date Requested</th>
                         <th>Amount</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -20,4 +21,4 @@
         </div>
     </div>
 
-    <?php $this->load->view('expense/partials/request_modal') ?>
+    <?php $this->load->view('expense/partials/view_reimburse_modal') ?>

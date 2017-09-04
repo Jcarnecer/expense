@@ -4,6 +4,7 @@ function fetch_request () {
         type: "POST",
         success: function(data){
             $("#request_data").html(data);
+            $("#exptbl").DataTable();
         }
     })
 }
@@ -31,6 +32,10 @@ $(document).ready(function() {
             success: function(data) {
                 var result = JSON.parse(data);
                 if(result === 'success'){
+                    $("input,select").val('');
+                    $("#error-message").html("");
+                    bs_notify("<strong> Request Submitted .</strong>","success","top","right");
+                    $("#request-modal").modal('hide');
                     fetch_request();
                 }else{
                     $("#error-message").html(result);

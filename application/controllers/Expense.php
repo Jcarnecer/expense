@@ -63,7 +63,8 @@ class Expense extends MY_Controller {
     }
 
     function fetch_request() {
-        $request = $this->Crud_model->fetch('reimbursement');
+        $order_by = 'created_at desc';
+        $request = $this->Crud_model->fetch('reimbursement','','','',$order_by);
         $x = 1;
         if(!$request == NULL){
             foreach($request as $row): 
@@ -73,9 +74,10 @@ class Expense extends MY_Controller {
             ?>
             <tr>
                 <td><?= $x ?></td>
-                <td><?= $users->firstname.' '.$users->lastname  ?></td>
+                <td><?= ucwords($users->firstname).' '.ucwords($users->lastname)  ?></td>
                 <td><?= $classify_reimbursement->classification ?></td>
-                <td><?= $row->amount ?></td>
+                <td>&#8369 <?= $row->amount ?></td>
+                <td><?= date('F j, Y',strtotime($row->created_at)) ?></td>
                 <?php if($row->status == '0'){ ?>
                     <td>Rejected</td>
                 <?php }elseif($row->status == '1'){ ?>
@@ -84,9 +86,6 @@ class Expense extends MY_Controller {
                     <td>Pending</td>
                 <?php } ?>  
                 
-                <td> 
-                <!-- <button type="button" class="btn btn-primary edit_classification" data-toggle="modal" data-remaining="<?= $row->remaining_allowance ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance ?>"  data-target="#edit_modal">Edit</button> -->
-                </td>
             </tr>
             
             <?php $x+=1; endforeach;
@@ -106,9 +105,10 @@ class Expense extends MY_Controller {
             ?>
             <tr>
                 <td><?= $x ?></td>
-                <td><?= $row->firstname.' '.$row->lastname ?></td>
+                <td><?= ucwords($row->firstname).' '.ucwords($row->lastname) ?></td>
                 <td><?= $classify_reimbursement->classification ?></td>
-                <td><?= $row->amount ?></td>
+                <td><?= date('F j, Y',strtotime($row->rcreated_at)) ?></td>
+                <td>&#8369 <?= $row->amount ?></td>
                 <?php if($row->rstatus == '0'){ ?>
                     <td>Rejected</td>
                 <?php }elseif($row->rstatus == '1'){ ?>
@@ -123,13 +123,15 @@ class Expense extends MY_Controller {
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <?php if($row->rstatus == 0){ ?>
-                    <a class="dropdown-item" href="#">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
+                    
                   <?php }elseif($row->rstatus == 2){ ?>
-                    <a class="dropdown-item" href="#">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
                     <a class="dropdown-item" href="expense/approve/<?= secret_url('encrypt',$row->rid) ?>">Approve</a>
                     <a class="dropdown-item" href="expense/reject/<?= secret_url('encrypt',$row->rid) ?>">Reject</a>
                   <?php }else{ ?>
-                    <a class="dropdown-item" href="#">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
+                    
                   <?php } ?>
                   <!--  //0 = rejected 1 = approve 2 = pending, -->
                 </div>
@@ -175,10 +177,16 @@ class Expense extends MY_Controller {
         );
 
         $this->load->library('upload', $config);
-        $this->form_validation->set_rules('receipt_image','Receipt image','callback_handleimage');
-        $this->form_validation->set_rules('classification','Classification','required');
-        $this->form_validation->set_rules('amount','Amount','required');
-        $this->form_validation->set_rules('receipt','Receipt image','receipt');
+        if($this->input->post('receipt') == 1){
+            $this->form_validation->set_rules('classification','Classification','required');
+            $this->form_validation->set_rules('amount','Amount','required');
+            $this->form_validation->set_rules('receipt','Receipt','required');
+            $this->form_validation->set_rules('receipt_image','Receipt image','callback_handleimage');
+        }else{
+            $this->form_validation->set_rules('classification','Classification','required');
+            $this->form_validation->set_rules('amount','Amount','required');
+            $this->form_validation->set_rules('receipt','Receipt','required');
+        }
         
         $where = ['id' => $this->input->post('classification')];
         $classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
@@ -186,19 +194,37 @@ class Expense extends MY_Controller {
         if($this->form_validation->run() == FALSE){
             echo json_encode(validation_errors());
         }else{
+
+            
             if($classification->remaining_allowance < $amount){
                 echo json_encode('Insuffient Allowance for '. $classification->classification);
             }else{
+                if($this->input->post('receipt') == 1) {
+                    $r_img = $this->upload->data('file_name');
+                }else{
+                    $r_img = 'noimage.png';
+                }
+
                 $insert = [
                     'user_id'   => 1,
                     'status'    => 2, //0 = rejected 1 = approve 2 = pending,
                     'classification_id' => clean_data($this->input->post('classification')),
                     'receipt'   => $this->input->post('receipt'),
                     'amount'    => $amount,
-                    'receipt_img'   => $this->upload->data('file_name')
+                    'receipt_img'   => $r_img
                 ];
     
                 $this->Crud_model->insert('reimbursement',$insert);
+                
+                $where = ['id' => $this->input->post('classification')];
+                $get_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
+                $allowance = $get_classification->allowance - $amount;
+                $update_classification = [
+                    'allowance' => $allowance
+                ];
+                $this->Crud_model->update('classification',$update_classification,$where);
+
+
                 echo json_encode('success');
             }
         }
@@ -206,14 +232,17 @@ class Expense extends MY_Controller {
         
     }
 
-    function handleimage(){
+    public function handleimage(){
         if (isset($_FILES['receipt_image']) && !empty($_FILES['receipt_image']['name'])){
             if ($this->upload->do_upload('receipt_image')){
                 return true;
             }else{
-              $this->form_validation->set_message('handleimage', $this->upload->display_errors());
+                $this->form_validation->set_message('handleimage', $this->upload->display_errors());
                 return false;
             }
+        }else{
+            $this->form_validation->set_message('handleimage', "You must upload Image");
+            return false;
         }
     }
 
@@ -224,7 +253,7 @@ class Expense extends MY_Controller {
 			'status'	=> 0
 		];
 		$this->Crud_model->update('reimbursement',$update_status,$where);
-		redirect('expense/reimbursement');
+		redirect('reimbursement');
     }
     
     public function approve($id) {
@@ -234,6 +263,6 @@ class Expense extends MY_Controller {
 			'status'	=> 1
 		];
 		$this->Crud_model->update('reimbursement',$update_status,$where);
-		redirect('expense/reimbursement');
+		redirect('reimbursement');
 	}
 }

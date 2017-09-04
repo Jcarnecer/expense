@@ -4,9 +4,21 @@ function fetch_reimbursement () {
         type: "POST",
         success: function(data){
             $("#reimburse_data").html(data);
+            $("#exptbl").DataTable();
         }
     })
 }
+
+$(document).on('click','#reimbursement-details',function() {
+    var classify = $(this).data('classify');
+    var name = $(this).data('name');
+    var receipt_img = $(this).data('receipt-img');
+    var amount = $(this).data('amount');
+    $("#name").html(name);
+    $('#receipt-img').attr('src','assets/uploads/'+receipt_img);
+    $("#amount").html("&#8369 "+amount);
+
+});
 
 $(document).ready(function() {
     $("#request-form").on('submit',function(e){

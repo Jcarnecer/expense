@@ -3,15 +3,15 @@
             <h3>Request Reimbursement</h3>
             <div class="table-responsive">
             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#request-modal">File Reimbursement</button>
-                <table class="table table-bordered exp-tbl" id="request-table">
+                <table class="table table-bordered exp-tbl" id="exptbl">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Classification</th>
                             <th>Amount</th>
+                            <th>Date Request</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="request_data">
