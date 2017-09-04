@@ -2,13 +2,13 @@ body {
   background-color: #f2f2f2; }
 
 .navbar-custom-bg {
-  background-color: #e3f2fd; }
+  background-color: #ffffff; }
 
 #sidebar {
   width: 210px;
   height: 100%;
   position: fixed;
-  background: #424a5d;
+  background: #15BBE8;
   overflow: scroll; }
   #sidebar .logo {
     margin: 15px auto; }
@@ -105,4 +105,16 @@ body {
   to {
     margin-left: 0px; } }
 
-/*# sourceMappingURL=styles.css.map */
+.custom-button {
+  background-color: #25CBF2;
+  border: none;
+  margin-bottom: 20px; }
+  .custom-button:hover {
+    background-color: #007A9B; }
+
+/*-- Expense Styles --*/
+.table {
+  background-color: #ffffff; }
+
+.table-bordered th {
+  border: none; }

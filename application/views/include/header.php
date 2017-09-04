@@ -9,11 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<title>Expense</title>
-		<script src="assets/js/jquery.js"></script>
-		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.min.css" >
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" >
-		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
+		<!-- <script src="assets/js/jquery.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.css" >
+		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
+		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" >
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
 		<script>
 			var base_url = window.location.origin+"/expense/";
 		</script>

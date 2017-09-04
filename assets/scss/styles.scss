@@ -13,7 +13,7 @@ body {
 // }
 
 .navbar-custom-bg {
-    background-color: $primary-color;
+    background-color: $white;
 }
 
 #sidebar {
@@ -149,4 +149,24 @@ body {
 @keyframes example {
     from {margin-left: 210px;}
     to {margin-left: 0px;}
+}
+
+.custom-button {
+    background-color: $primary-color;
+    border: none;
+    margin-bottom: 20px;
+
+    &:hover {
+        background-color: $dark-blue;
+    }
+}
+
+/*-- Expense Styles --*/
+
+.table {
+    background-color: $white;
+}
+
+.table-bordered th {
+    border: none;
 }
