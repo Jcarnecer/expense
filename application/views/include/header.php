@@ -15,10 +15,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" >
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
+		<script src="assets/js/bs_notify.js"></script>
+		<script src="assets/js/bootstrap-notify.min.js"></script>
 		<script>
 			var base_url = window.location.origin+"/expense/";
 		</script>
-		<?php $segment = $this->uri->segment(2); 
+		<?php $segment = $this->uri->segment(1); 
 			if($segment == 'classification') { ?>
 				<script src="assets/js/classification.js">
 				</script>
@@ -35,12 +37,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<script>
 					fetch_reimbursement();	
 				</script>
-			<?php } ?>
-
-			<script>
-				$(document).ready(function(){
-					$(".exp-tbl").DataTable();
-				})
-			</script>
+		<?php } ?>
 	</head>
 	<body>

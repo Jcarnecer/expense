@@ -10,8 +10,8 @@
                             <th>Name</th>
                             <th>Classification</th>
                             <th>Amount</th>
+                            <th>Date Request</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="request_data">

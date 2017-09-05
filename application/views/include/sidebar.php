@@ -25,9 +25,9 @@
 			<span>Expense</span>
 		</a>
 		<ul class="sub collapse" id="UIElementsSub">
-			<li><a  href="expense/reimbursement">Reimbursement</a></li>
-			<li><a  href="expense/request">Request</a></li>
-			<li><a  href="expense/classification">Classification</a></li>
+			<li><a  href="reimbursement">Reimbursement</a></li>
+			<li><a  href="request">Request</a></li>
+			<li><a  href="classification">Classification</a></li>
 			<!-- <li><a  href="panels.html">Panels</a></li> -->
 		</ul>
 	</li>
