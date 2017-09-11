@@ -2,9 +2,8 @@
 		<div class="container">
         <h3>Classification</h3>
         <div class="table-responsive">
-<<<<<<< HEAD
         <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#add_modal">Add Classification</button>
-            <table class="table table-bordered exp-tbl" id="classification-table">
+            <table class="table table-bordered exp-tbl" id="exptbl">
                 <thead>
                     <tr>
                         <th>ID</th>

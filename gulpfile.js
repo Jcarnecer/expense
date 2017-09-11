@@ -9,7 +9,7 @@ gulp.task('browserSync', function(){
         //     baseDir: ['./assets','./application/**/*.php']
         // },
         proxy: 'localhost/expense/',
-        // port: 8000,
+        port: 8000,
         serveStatic: ['.', './assets']
     })
 });
