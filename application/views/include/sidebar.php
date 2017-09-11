@@ -6,21 +6,6 @@
 	</div>
 
 	<ul class="sidebar-menu">
-			
-		<!-- <li class="">
-			<a class="reimbursement" href="#">
-				<i class="fa fa-dashboard"></i>
-				<span>Reimbursement</span>
-			</a>
-		</li>
-
-		<li class="">
-			<a class="request" href="#">
-				<i class="fa fa-dashboard"></i>
-				<span>Request</span>
-			</a>
-		</li> -->
-		
 
 		<li class="sub-menu">
 			<a data-toggle="collapse" href="#expense-sub" aria-expanded="false" aria-controls="expense-sub" >
@@ -33,14 +18,6 @@
 				<li><a  href="classification">Classification</a></li>
 			</ul>
 		</li>
-		
-
-		<!-- <li class="">
-			<a class="" href="<?= base_url('users/logout'); ?>">
-				<i class="fa fa-dashboard"></i>
-				<span>Logout</span>
-			</a>
-		</li> -->
 
 	</ul>
 	<!-- sidebar menu end-->

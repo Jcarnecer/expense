@@ -1,3 +1,4 @@
+</div> 
 </div>
 
 		<!-- <script src="assets/js/popper.min.js"></script>

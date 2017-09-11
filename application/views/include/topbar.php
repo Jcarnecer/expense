@@ -1,4 +1,4 @@
-<!-- <div class="main-content"> -->
+<div class="main-content">
 	<div class="topbar">
 		<nav class="navbar navbar-custom">
 		<div id="nav-icon-open" class="custom-toggle hidden-toggle">
@@ -9,7 +9,5 @@
 			<a class="navbar-brand" href="#">Navbar</a>
 		</nav>
 	</div>
-	<!-- <div class="container-fluid">
-		Content goes here
-	</div> -->
-<!-- </div> -->
+	<div class="container-fluid">
+	
