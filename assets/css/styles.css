@@ -1,108 +1,105 @@
 body {
   background-color: #f2f2f2; }
 
-.navbar-custom-bg {
-  background-color: #e3f2fd; }
+.navbar-custom {
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
+  justify-content: left; }
 
 #sidebar {
   width: 210px;
   height: 100%;
   position: fixed;
-  background: #424a5d;
-  overflow: scroll; }
+  background: #25CBF2;
+  overflow-y: scroll;
+  transition: .5s;
+  -webkit-transition: .5s;
+  -moz-transition: .5s; }
   #sidebar .logo {
     margin: 15px auto; }
+  #sidebar .sidebar-menu {
+    padding-top: 50px; }
   #sidebar ul, #sidebar li {
     list-style: none; }
-    #sidebar ul a, #sidebar li a {
-      display: block;
-      padding: 15px 30px 15px 30px; }
-      #sidebar ul a:hover, #sidebar li a:hover {
-        background-color: #ffffff;
-        border-left: 4px solid blue;
-        text-decoration: none; }
+  #sidebar a {
+    border-left: 5px solid transparent;
+    color: #ffffff;
+    display: block;
+    padding: 15px 30px 15px 30px;
+    white-space: nowrap; }
+    #sidebar a:hover {
+      background-color: #15BBE8;
+      border-left: 5px solid #007A9B;
+      text-decoration: none; }
   #sidebar ul.sub li {
     padding-left: 30px; }
 
-.main-content {
+.hidden-toggle {
+  display: none; }
+
+.main-content, .reverse-animation {
   margin-left: 210px; }
 
 .animation {
-  animation-name: example;
-  animation-duration: .5s;
-  margin: 0; }
+  animation: expand .5s;
+  margin-left: 0; }
 
-.toggle-show {
-  display: none; }
+.reverse-animation {
+  animation: reverse-expand .5s; }
 
-#nav-icon3 {
-  width: 30px;
-  height: 45px;
-  position: relative;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .5s ease-in-out;
-  -moz-transition: .5s ease-in-out;
-  -o-transition: .5s ease-in-out;
-  transition: .5s ease-in-out;
-  cursor: pointer; }
-
-#nav-icon3 span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: #d3531a;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: .25s ease-in-out;
-  -moz-transition: .25s ease-in-out;
-  -o-transition: .25s ease-in-out;
-  transition: .25s ease-in-out; }
-
-/* Icon 3 */
-#nav-icon3 span:nth-child(1) {
-  top: 0px; }
-
-#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
-  top: 9px; }
-
-#nav-icon3 span:nth-child(4) {
-  top: 19px; }
-
-#nav-icon3.open span:nth-child(1) {
-  top: 18px;
-  width: 0%;
-  left: 50%; }
-
-#nav-icon3.open span:nth-child(2) {
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg); }
-
-#nav-icon3.open span:nth-child(3) {
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
-
-#nav-icon3.open span:nth-child(4) {
-  top: 18px;
-  width: 0%;
-  left: 50%; }
-
-@keyframes example {
+@keyframes expand {
   from {
     margin-left: 210px; }
   to {
     margin-left: 0px; } }
 
-/*# sourceMappingURL=styles.css.map */
+@keyframes reverse-expand {
+  from {
+    margin-left: 0px; }
+  to {
+    margin-left: 210px; } }
+
+#nav-icon-close {
+  float: right;
+  margin: 10px; }
+
+#nav-icon-open {
+  margin-right: 10px; }
+
+.custom-toggle {
+  cursor: pointer;
+  height: 25px;
+  position: relative;
+  width: 30px; }
+
+.custom-toggle span {
+  background: #007A9B;
+  border-radius: 9px;
+  display: block;
+  height: 3px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  width: 100%; }
+
+/* Icon 3 */
+#nav-icon-open span:nth-child(1) {
+  top: 0px; }
+
+#nav-icon-open span:nth-child(2) {
+  top: 9px; }
+
+#nav-icon-open span:nth-child(3) {
+  top: 19px; }
+
+#nav-icon-close span:nth-child(1) {
+  top: 15px;
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+#nav-icon-close span:nth-child(2) {
+  top: 15px;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg); }

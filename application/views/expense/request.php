@@ -2,7 +2,7 @@
             <div class="container">
             <h3>Request Reimbursement</h3>
             <div class="table-responsive">
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#request-modal">File Reimbursement</button>
+            <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#request-modal">File Reimbursement</button>
                 <table class="table table-bordered exp-tbl" id="exptbl">
                     <thead>
                         <tr>

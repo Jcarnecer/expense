@@ -220,7 +220,7 @@ class Expense extends MY_Controller {
                 $get_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
                 $allowance = $get_classification->allowance - $amount;
                 $update_classification = [
-                    'allowance' => $allowance
+                    'remaining_allowance' => $allowance
                 ];
                 $this->Crud_model->update('classification',$update_classification,$where);
 

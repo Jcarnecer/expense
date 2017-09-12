@@ -1,43 +1,24 @@
 <div id="sidebar">
-<!-- sidebar menu start-->
-<!-- <button class="btn btn-default toggle-button" type="button" >
-	<span class="navbar-toggler-icon"></span>
-</button> -->
-<div id="nav-icon3">
-	<span></span>
-	<span></span>
-	<span></span>
-	<span></span>
-</div>
-<a class="logo" href="#">Navbar</a>
-<ul class="sidebar-menu">
-		
-	<li class="">
-		<a class="" href="#">
-			<i class="fa fa-dashboard"></i>
-			<span>Dashboard</span>
-		</a>
-	</li>
+	<!-- sidebar menu start-->
+	<div id="nav-icon-close" class="custom-toggle">
+		<span></span>
+		<span></span>
+	</div>
 
-	<li class="sub-menu">
-		<a data-toggle="collapse" href="#UIElementsSub" aria-expanded="false" aria-controls="UIElementsSub" >
-			<i class="fa fa-desktop"></i>
-			<span>Expense</span>
-		</a>
-		<ul class="sub collapse" id="UIElementsSub">
-			<li><a  href="reimbursement">Reimbursement</a></li>
-			<li><a  href="request">Request</a></li>
-			<li><a  href="classification">Classification</a></li>
-			<!-- <li><a  href="panels.html">Panels</a></li> -->
-		</ul>
-	</li>
-	<!-- <li class="">
-		<a class="" href="<?= base_url('users/logout'); ?>">
-			<i class="fa fa-dashboard"></i>
-			<span>Logout</span>
-		</a>
-	</li> -->
+	<ul class="sidebar-menu">
 
-</ul>
-<!-- sidebar menu end-->
+		<li class="sub-menu">
+			<a data-toggle="collapse" href="#expense-sub" aria-expanded="false" aria-controls="expense-sub" >
+				<i class="fa fa-desktop"></i>
+				<span>Expense</span>
+			</a>
+			<ul class="sub collapse" id="expense-sub">
+				<li><a  href="reimbursement">Reimbursement</a></li>
+				<li><a  href="request">Request</a></li>
+				<li><a  href="classification">Classification</a></li>
+			</ul>
+		</li>
+
+	</ul>
+	<!-- sidebar menu end-->
 </div>
