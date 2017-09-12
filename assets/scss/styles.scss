@@ -1,13 +1,14 @@
 @import 'custom-variables';
 
 body {
-    background-color: $gray-custom;
+    background-color: $lightest-custom;
 }
 
 .navbar-custom {
     background-color: $white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
     justify-content: left;
+    margin-bottom: 30px;
 }
 
 #sidebar {
@@ -135,4 +136,71 @@ body {
     -ms-transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
+}
+
+.custom-button {
+    background-color: $primary-color;
+    border: none;
+    margin-bottom: 50px;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+.table {
+    background: $white;
+    thead {
+        tr {
+            th {
+                border: none;
+            }
+        }
+    }
+}
+
+.dataTables_wrapper {
+    margin-bottom: 30px;
+
+    .dataTables_filter {
+        input {
+            border: 1px solid $light-gray;
+            border-radius: 30px;
+            text-indent: 10px;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .dataTables_paginate {
+        a {
+            &.paginate_button {
+                &.current {
+                    border-radius: 50%;
+                }
+
+                &:hover:not(.next, .previous) {
+                    background: $secondary-color;
+                    background-color: $secondary-color;
+                    border: 1px solid $secondary-color;
+                    border-radius: 50%;
+                    color: $white !important;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            &#exptbl_next, &#exptbl_previous {
+                &:hover {
+                    background: $secondary-color;
+                    border: 1px solid $secondary-color;
+                    color: $white !important;
+                }
+            }      
+        }
+    }
 }

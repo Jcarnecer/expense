@@ -10,11 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<title>Expense</title>
 		<script src="assets/js/jquery.js"></script>
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.css" >
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
 		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css" >
-		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
+		<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 		<script src="assets/js/bootstrap-notify.min.js"></script>
 		<script src="assets/js/bs_notify.js"></script>
 		<script>

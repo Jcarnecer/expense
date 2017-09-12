@@ -4,7 +4,8 @@ body {
 .navbar-custom {
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
-  justify-content: left; }
+  justify-content: left;
+  margin-bottom: 30px; }
 
 #sidebar {
   width: 210px;
@@ -103,3 +104,38 @@ body {
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
+
+.custom-button {
+  background-color: #25CBF2;
+  border: none;
+  margin-bottom: 50px; }
+  .custom-button:hover {
+    background-color: #15BBE8; }
+
+.table {
+  background: #ffffff; }
+  .table thead tr th {
+    border: none; }
+
+.dataTables_wrapper {
+  margin-bottom: 30px; }
+  .dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #979797;
+    border-radius: 30px;
+    text-indent: 10px; }
+    .dataTables_wrapper .dataTables_filter input:focus {
+      outline: none; }
+  .dataTables_wrapper .dataTables_paginate a.paginate_button.current {
+    border-radius: 50%; }
+  .dataTables_wrapper .dataTables_paginate a.paginate_button:hover:not(.next):not(.previous) {
+    background: #15BBE8;
+    background-color: #15BBE8;
+    border: 1px solid #15BBE8;
+    border-radius: 50%;
+    color: #ffffff !important; }
+  .dataTables_wrapper .dataTables_paginate a.paginate_button:focus {
+    outline: none; }
+  .dataTables_wrapper .dataTables_paginate a#exptbl_next:hover, .dataTables_wrapper .dataTables_paginate a#exptbl_previous:hover {
+    background: #15BBE8;
+    border: 1px solid #15BBE8;
+    color: #ffffff !important; }

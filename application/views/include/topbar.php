@@ -6,7 +6,7 @@
 			<span></span>
 			<span></span>
 		</div>
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="#">Logo</a>
 		</nav>
 	</div>
 	<div class="container-fluid">

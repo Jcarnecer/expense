@@ -24,6 +24,11 @@ function toggle(){
 	});
 }
 
+ $( "ul .sub" ).click(function( event ) {
+    event.stopPropagation();
+    // Do something
+  });
+
 $(function () {
     $('.btn-danger').popover({
       container: 'body'
