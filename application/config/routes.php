@@ -53,6 +53,10 @@ $route['reimbursement'] = 'expense/reimbursement';
 $route['request']   ='expense/request';
 $route['classification']    ='expense/classification';
 
-$route['default_controller'] = 'dashboard';
+//login controller
+$route['auth/login'] = 'login/auth';
+
+
+$route['default_controller'] = 'login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -37,7 +37,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<script>
 					fetch_reimbursement();	
 				</script>
-		<?php } ?>
+			<?php }elseif($segment == 'users'){ ?>
+				<script src="assets/js/register.js">
+				</script>
+
+			<?php } ?>
 	</head>
 	<body>
 		
