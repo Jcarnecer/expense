@@ -1,6 +1,39 @@
 <?php
 class Crud_model extends CI_Model{
-	
+	// function set_update(){
+	// 	$classification = $this->fetch('classification');
+	// 	print_r($classification);
+	// 	foreach($classification as $row){
+	// 		$c_name = $row->classification;
+	// 		$c_allowance = $row->allowance_per_user;
+	// 		print_r("<br>".$c_name."<br>");
+	// 		$user = $this->fetch('users');
+	// 		foreach($user as $user_row){
+	// 			$u_allowance_update = $user_row->allowance_update;
+	// 			// print_r($u_allowance_update);
+	// 		}
+	// 	}
+		
+	// 	// $startdate = $u_allowance_update;
+	// 	$startdate = '2017-10-16';
+	// 	// $check = date('Y-m-d',strtotime($next_month,$startdate));
+	// 	$auto_update = date("Y-m-d", strtotime(date("Y-m-d", strtotime($startdate))."+1 Month"));
+	// 	// if($)
+	// 	print_r($startdate);
+	// 	echo "<br>";
+	// 	print_r($auto_update);
+	// 	echo "<br>";
+	// 	if(date('Y-m-d') > $auto_update){
+	// 		echo "remain";
+	// 	}else{
+	// 		echo "update";
+	// 	}
+	// 	die;
+    //     $expiration = time()-(3600*3); 
+    //     $this->db->query("UPDATE reservation set status = 0 WHERE reserve_date < ".$expiration." AND status !=2 AND status !=4 ");  
+    // }
+
+
 	public function fetch($table,$where="",$limit="",$offset="",$order=""){
 		if (!empty($where)) {
 			$this->db->where($where);	
@@ -108,6 +141,13 @@ class Crud_model extends CI_Model{
 		}else{
 			return FALSE;
 		}
+	}
+
+	public function last_inserted_row($table,$data) {
+		$this->db->insert($table, $data);
+		$id = $this->db->insert_id();
+		$q = $this->db->get_where($table, array('id' => $id));
+		return $q->row();
 	}
 
 	public function join_reimburse_row($id){

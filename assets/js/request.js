@@ -45,3 +45,6 @@ $(document).ready(function() {
         e.preventDefault();
     })
 })
+
+
+fetch_request();	

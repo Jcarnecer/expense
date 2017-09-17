@@ -40,4 +40,23 @@ $config =
                 'rules'  	=> 	'required',
             ],
         ],
+    
+    'classification_validate'
+    =>  [
+            [
+                'field'		=> 	'classification',
+                'label'   	=> 	'Classification',
+                'rules'  	=> 	'required',
+            ],
+            [
+                'field'		=> 	'allowance',
+                'label'   	=> 	'Allowance',
+                'rules'  	=> 	'required',
+            ],
+            [
+                'field'		=> 	'budget',
+                'label'   	=> 	'Budget',
+                'rules'  	=> 	'required',
+            ],
+        ]
 ];

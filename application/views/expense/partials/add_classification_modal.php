@@ -12,8 +12,13 @@
 					<div class="form-group">
 						<label>Classification</label>
 						<input class="form-control" id="a-c" type="text" name="classification">
+						<h5 class="text-danger" id="c-error"></h5>
 						<label>Allowance</label>
 						<input class="form-control" id="a-a" type="text" name="allowance">
+						<h5 class="text-danger" id="a-error"></h5>
+						<label>Budget</label>
+						<input class="form-control" id="a-b" type="text" name="budget">
+						<h5 class="text-danger" id="b-error"></h5>
 					</div>
 			</div>
 			<div class="modal-footer">

@@ -13,10 +13,22 @@
 				<span>Expense</span>
 			</a>
 			<ul class="sub collapse" id="expense-sub">
-				<li><a  href="reimbursement">Reimbursement</a></li>
-				<li><a  href="request">Request</a></li>
-				<li><a  href="classification">Classification</a></li>
+				<?php if($this->user->info('pos_id')==3){ //human resource (tentative way)?>
+					<li><a  href="reimbursement">Reimbursement</a></li>
+					<li><a  href="classification">Classification</a></li>
+				<?php } ?>
+				<li><a  href="request">File Reimburse</a></li>
 			</ul>
+		</li>
+		<li class="sub-menu">
+			<a href="users" >
+				<i class="fa fa-users"></i>
+				<?php if($this->user->info('pos_id')==3){  //tentative ?>
+
+				<span>User Management</span>
+				<?php } ?>
+			</a>
+			
 		</li>
 
 	</ul>

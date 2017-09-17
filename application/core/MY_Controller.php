@@ -7,7 +7,8 @@ class MY_Controller	extends CI_Controller
 		$this->load->helper('encryption_helper');
 		$this->load->library('user');
 		$this->load->model('Crud_model');
-		
+		$this->load->dbforge();
+		// $this->Crud_model->set_update();
 	}
 	
 	private function no_session() {

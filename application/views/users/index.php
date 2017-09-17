@@ -1,87 +1,27 @@
-<style>
-.form-horizontal{
-    margin-top: 10%;
-}
+<?php $classification = $this->Crud_model->fetch('classification') ?>
+            <div class="container">
+            <h3>Add Users</h3>
+            <div class="table-responsive">
+            <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#add-users-modal">Add Users</button>
+                <table class="table table-bordered exp-tbl" id="exptbl">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <?php foreach($classification as $row){ ?>
+                                <th><?= $row->classification ?></th>
+                            <?php } ?>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users_data">
 
-#validation{
-    display:none;
-}
-</style>
-<form class="form-horizontal" role="form" method="POST" id="register-form">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h2>Create User</h2>
-                    <div class="alert alert-danger text-center " id="validation">
-                    </div>
-                    <hr>
-                </div>
+                    </tbody>
+                </table>
             </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <label class="sr-only" for="email">E-Mail Address</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="email" class="form-control" id="email"
-                                   placeholder="you@example.com"  autofocus>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="firstname">First Name</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="text" name="firstname" class="form-control" id="firstname"
-                                   placeholder="First Name" >
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="sr-only" for="lastname">Last Name</label>
-                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                            <input type="text" name="lastname" class="form-control" id="lastname"
-                                   placeholder="Last Name" >
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="form-control-feedback">
-                        <span class="text-danger align-middle">
-                        <!-- Put password error message here -->    
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6" style="padding-top: .35rem">
-                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                        <label class="form-check-label">
-                            <input class="form-check-input" name="remember"
-                                   type="checkbox" >
-                            <span style="padding-bottom: .15rem">Remember me</span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row" style="padding-top: 1rem">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
-                    <a class="btn btn-link" href="">Forgot Your Password?</a>
-                </div>
-            </div>
-        </form>
+        </div>
+
+        <?php $this->load->view('users/partials/add_user_modal') ?>
+        <?php $this->load->view('users/partials/users_detail') ?>

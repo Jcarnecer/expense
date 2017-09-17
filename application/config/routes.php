@@ -56,6 +56,8 @@ $route['classification']    ='expense/classification';
 //login controller
 $route['auth/login'] = 'login/auth';
 
+//users
+// $route['users/create']  = 'users/add_user';
 
 $route['default_controller'] = 'login';
 $route['404_override'] = '';

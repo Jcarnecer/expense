@@ -14,8 +14,8 @@
 						<input class="form-control" type="text" id="classification"  name="classification">
 						<label>Allowance</label>
 						<input class="form-control" type="text" id="allowance" name="allowance">
-                        <label>Remaining Allowance</label>
-						<input class="form-control" type="text" id="r_allowance" name="r_allowance">
+                        <label>Budget</label>
+						<input class="form-control" type="text" id="budget" name="budget">
 					</div>
 			</div>
 			<div class="modal-footer">

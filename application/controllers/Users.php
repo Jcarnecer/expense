@@ -11,10 +11,91 @@ class Users extends MY_Controller {
         );
     }
 
+    public function fetch_users() {
+        $order_by = 'lastname asc';
+        $users = $this->Crud_model->fetch('users','','','',$order_by);
+        $classification = $this->Crud_model->fetch('classification');
+
+        ?>
+            <tr>
+                <?php 
+                $x = 1;
+                foreach($users as $row): ?>
+                <td><?= $x ?></td>
+                <td><?= $row->firstname.' '.$row->lastname ?></td>
+                <td><?= $row->email ?></td>
+                <?php if($row->status == 1){ ?>
+                        <td>Active</td>
+                <?php }else{ ?>
+                        <td>Inactive</td>
+                <?php }
+                
+                foreach($classification as $c_row){ 
+                    $allowance = $c_row->allowance_per_user;
+                    $classify = strtolower($c_row->classification);
+                    $user_classify = $row->$classify;
+                    // print_r($allowance);die;
+                    ?>
+                    <td>
+                        <?= $user_classify ?>
+                    </td>
+          <?php }
+                ?>
+                
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Action
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <?php if($row->status == 1){ ?>
+                            <a class="dropdown-item" href="users/deactivate/<?= secret_url('encrypt',$row->id) ?>">Deactivate</a>
+                            <a class="dropdown-item user_details" 
+                            data-id="<?= secret_url('encrypt',$row->id) ?>" 
+                            data-name="<?= $row->firstname.' '.$row->lastname ?>"
+                            data-email="<?= secret_url('encrypt',$row->email) ?>"
+                            data-toggle="modal" href="#user-details-modal">Details</a>
+                        <?php }else{ ?>
+                            <a class="dropdown-item" href="users/activate/<?= secret_url('encrypt',$row->id) ?>">Activate</a>
+                            <a class="dropdown-item user_details" data-id="<?= secret_url('encrypt',$row->id) ?>" data-toggle="modal" href="#user-details-modal">Details</a>
+                        <?php } ?>
+                        <!--  //0 = inactive 1 = active -->
+                        </div>
+                    </div>
+              </td>
+            </tr>
+        <?php
+                $x +=1;
+                endforeach;
+    }
+
+    public function activate($id){
+        $decrypt_id = secret_url('decrypt',$id);
+        $where = ['id' => $decrypt_id];
+
+        $update_status = [
+            'status'    => 1
+        ];
+        $this->Crud_model->update('users',$update_status,$where);
+        redirect('users');
+    }
+
+    public function deactivate($id){
+        $decrypt_id = secret_url('decrypt',$id);
+        $where = ['id' => $decrypt_id];
+
+        $update_status = [
+            'status'    => 0
+        ];
+        $this->Crud_model->update('users',$update_status,$where);
+        redirect('users');
+    }
+
     public function auth() {
         if($this->form_validation->run('reg_validate') == FALSE){
             echo json_encode(validation_errors());
         }else{
+            
             $generate_password 	= 	"expense";
             
             $insert_user = [
@@ -22,9 +103,22 @@ class Users extends MY_Controller {
 				'lastname'    		=>    clean_data(ucwords($this->input->post('lastname'))),
                 'middlename'    	=>    clean_data(ucwords($this->input->post('middlename'))),
                 'email'    	=>    clean_data($this->input->post('email')),
-                'password'  => hash_password($generate_password)
+                'pos_id'  => $this->input->post('position'),
+                'password'  => hash_password($generate_password),
             ];
-            $this->Crud_model->insert('users',$insert_user);
+            $last_inserted_user = $this->Crud_model->last_inserted_row('users',$insert_user);
+            $last_id = $last_inserted_user->id;
+            $classification = $this->Crud_model->fetch('classification');
+            foreach($classification as $row){
+                $classification = $row->classification;
+                $allowance = $row->allowance_per_user;
+                $classify_lowercase = strtolower($classification);
+                $data = [
+                    $classify_lowercase => $allowance
+                ];
+                $where = ['id' => $last_id];
+                $this->Crud_model->update('users',$data,$where);
+            }
 
             echo json_encode('success');
         }

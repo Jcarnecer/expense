@@ -9,7 +9,7 @@
                         <th>ID</th>
                         <th>Classification</th>
                         <th>Allowance</th>
-                        <th>Remaining Allowance</th>
+                        <th>Budget</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -22,3 +22,4 @@
 
     <?php $this->load->view('expense/partials/add_classification_modal') ?>
     <?php $this->load->view('expense/partials/edit_classification_modal') ?>
+    <?php $this->load->view('expense/partials/reset_allowance') ?>

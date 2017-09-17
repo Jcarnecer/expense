@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
 		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css" >
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+		<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/styles.css" >
 		<script src="assets/js/bootstrap-notify.min.js"></script>
 		<script src="assets/js/bs_notify.js"></script>
@@ -28,17 +29,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php }elseif($segment == 'request'){ ?>
 				<script src="assets/js/request.js">
 				</script>
-				<script>
-					fetch_request();	
-				</script>
 			<?php }elseif($segment == 'reimbursement'){ ?>
 				<script src="assets/js/reimbursement.js">
 				</script>
-				<script>
-					fetch_reimbursement();	
-				</script>
 			<?php }elseif($segment == 'users'){ ?>
-				<script src="assets/js/register.js">
+				<script src="assets/js/users.js">
 				</script>
 
 			<?php } ?>

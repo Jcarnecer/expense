@@ -13,7 +13,6 @@
 					<div class="form-group">
 						<label>Classification</label>
 						<select name="classification" class="form-control">
-							<option value="" disabled selected> -- Select Classification --</option>
 							<?php foreach($this->classification as $row): ?>
 								<option value="<?= $row->id ?>"><?= $row->classification ?></option>
 							<?php endforeach ?>

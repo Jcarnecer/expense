@@ -1,3 +1,14 @@
+function fetch_users () {
+    $.ajax({
+        url: base_url + 'users/fetch_users',
+        type: "POST",
+        success: function(data){
+            $("#users_data").html(data);
+            $("#exptbl").DataTable();
+        }
+    })
+}
+
 $(document).ready(function() {
     $("#register-form").on('submit',function(e){
         $.ajax({
@@ -9,6 +20,8 @@ $(document).ready(function() {
                 if(result === 'success') {
                     $("input").val("");
                     $("#validation").hide();
+                    $("#add-users-modal").modal('hide');
+                    fetch_users();
                 }else{
                     $("#validation").show();
                     $("#validation").html(result);
@@ -23,3 +36,5 @@ $(document).ready(function() {
         e.preventDefault();
     })
 })
+
+fetch_users();
