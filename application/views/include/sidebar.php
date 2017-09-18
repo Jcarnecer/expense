@@ -20,16 +20,15 @@
 				<li><a  href="request">File Reimburse</a></li>
 			</ul>
 		</li>
+				<?php if($this->user->info('pos_id')==3){  //tentative ?>
 		<li class="sub-menu">
 			<a href="users" >
 				<i class="fa fa-users"></i>
-				<?php if($this->user->info('pos_id')==3){  //tentative ?>
-
 				<span>User Management</span>
-				<?php } ?>
 			</a>
 			
 		</li>
+		<?php } ?>
 
 	</ul>
 	<!-- sidebar menu end-->

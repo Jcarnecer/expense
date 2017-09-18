@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6" style="padding-top: .35rem">
                     <div class="form-check mb-2 mr-sm-2 mb-sm-0">
@@ -82,13 +82,13 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success" id="login"><i class="fa fa-sign-in" id="signin-icon"></i> Login</button>
                     
-                    <a class="btn btn-link" id="forgot-passowrd" href="">Forgot Your Password?</a>
+                    <!-- <a class="btn btn-link" id="forgot-passowrd" href="">Forgot Your Password?</a> -->
                 </div>
             </div>
         </form>

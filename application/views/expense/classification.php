@@ -9,7 +9,7 @@
                         <th>ID</th>
                         <th>Classification</th>
                         <th>Allowance</th>
-                        <th>Budget</th>
+                        <!-- <th>Budget</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>

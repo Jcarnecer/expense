@@ -4,7 +4,7 @@ function fetch_request() {
         type: "POST",
         success: function(data){
             $("#request_data").html(data);
-            // $("#exptbl").DataTable();
+            $("#exptbl").DataTable();
         }
     })
 }
