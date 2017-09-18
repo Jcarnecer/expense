@@ -157,7 +157,7 @@ class Expense extends MY_Controller {
         }else{
 
             $insert_column = [
-                clean_data($this->input->post('classification')) 
+                clean_data(strtolower($this->input->post('classification'))) 
                 => 
                 [
                     'type'  => 'float(8,2)',
@@ -175,7 +175,7 @@ class Expense extends MY_Controller {
             $this->Crud_model->insert('classification',$insert);
 
             $insert_allowance = [
-                clean_data($this->input->post('classification'))
+                clean_data(strtolower($this->input->post('classification')))
                 =>  clean_data($this->input->post('allowance'))
             ];
             $this->Crud_model->update('users',$insert_allowance);
