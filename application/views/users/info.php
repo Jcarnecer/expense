@@ -24,15 +24,14 @@ $classification = $this->Crud_model->fetch('classification');
                 </div>
 
                 <div class="col-6 pull-right">
-                    <a href="#<?= secret_url('encrypt',$user->id) ?>-profile-modal" data-toggle="modal"><img height="30%" src="uploads/<?= $user->profile_picture ?>" alt=""></a>
+                    <img height="200px" width="50%" src="uploads/<?= $user->profile_picture ?>" alt="">
                 </div>
             </div>
         </div>
 
-        <div id="<?= secret_url('encrypt',$user->id) ?>-profile-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">
+        <!-- <div id="<?= secret_url('encrypt',$user->id) ?>-profile-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">
   	<div class="modal-dialog">
 
-    <!-- Modal content-->
     	<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title">Profile Picture</h4>
@@ -50,4 +49,4 @@ $classification = $this->Crud_model->fetch('classification');
 			</div>
 		</div>
   </div>
-</div>
+</div> -->
