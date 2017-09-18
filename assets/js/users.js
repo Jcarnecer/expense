@@ -9,6 +9,7 @@ function fetch_users () {
     })
 }
 
+
 $(document).ready(function() {
     $("#register-form").on('submit',function(e){
         $.ajax({
@@ -36,5 +37,8 @@ $(document).ready(function() {
         e.preventDefault();
     })
 })
+
+
+
 
 fetch_users();

@@ -1,5 +1,9 @@
 <?php
 if (!defined('BASEPATH')) exit('No direct access allowed');
+/* 
+    Library for Login User
+    this will get the information of the user who currently login
+*/
 
 class User {
 
@@ -17,7 +21,7 @@ class User {
         if(!$userinfo == NULL) {
             return $userinfo->$col; 
         }else{
-            echo "Opps! Something went Wrong!";
+            echo "Error mo to!";
         }
     }
 }

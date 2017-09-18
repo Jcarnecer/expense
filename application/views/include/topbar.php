@@ -8,6 +8,7 @@
 		</div>
 			<a class="navbar-brand" href="#">Navbar</a>
 			<a class="navbar-brand" href="login/logout">Logout</a>
+			<a class="navbar-brand" href="profile">Profile</a>
 		</nav>
 	</div>
 	<div class="container-fluid">

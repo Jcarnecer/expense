@@ -10,6 +10,21 @@ class Users extends MY_Controller {
             ]
         );
     }
+    
+    public function info($name,$id) {
+        $decrypt_id = secret_url('decrypt',$id);
+        $where = ['id'  => $decrypt_id];
+        $user = $this->Crud_model->fetch_tag_row('*','users',$where);
+        $pos_where = ['id' => $user->pos_id];
+        $position = $this->Crud_model->fetch_tag_row('*','positions',$pos_where);
+        parent::mainpage('users/info',
+            [
+                'title' => $user->firstname .' '.$user->lastname,
+                'user' => $user,
+                'position'  => $position->pos_name
+            ]
+        );
+    }
 
     public function fetch_users() {
         $order_by = 'lastname asc';
@@ -50,14 +65,13 @@ class Users extends MY_Controller {
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <?php if($row->status == 1){ ?>
                             <a class="dropdown-item" href="users/deactivate/<?= secret_url('encrypt',$row->id) ?>">Deactivate</a>
-                            <a class="dropdown-item user_details" 
-                            data-id="<?= secret_url('encrypt',$row->id) ?>" 
-                            data-name="<?= $row->firstname.' '.$row->lastname ?>"
-                            data-email="<?= secret_url('encrypt',$row->email) ?>"
-                            data-toggle="modal" href="#user-details-modal">Details</a>
+                            <a class="dropdown-item user_details"
+                            
+                            href="user/<?= strtolower($row->lastname.''.$row->firstname).'/'.secret_url('encrypt',$row->id) ?> ">Details</a>
                         <?php }else{ ?>
                             <a class="dropdown-item" href="users/activate/<?= secret_url('encrypt',$row->id) ?>">Activate</a>
-                            <a class="dropdown-item user_details" data-id="<?= secret_url('encrypt',$row->id) ?>" data-toggle="modal" href="#user-details-modal">Details</a>
+                            <a class="dropdown-item user_details" 
+                            href="user/<?= strtolower($row->lastname.''.$row->firstname).'/'.secret_url('encrypt',$row->id) ?> ">Details</a>
                         <?php } ?>
                         <!--  //0 = inactive 1 = active -->
                         </div>
@@ -68,6 +82,7 @@ class Users extends MY_Controller {
                 $x +=1;
                 endforeach;
     }
+
 
     public function activate($id){
         $decrypt_id = secret_url('decrypt',$id);
@@ -105,6 +120,7 @@ class Users extends MY_Controller {
                 'email'    	=>    clean_data($this->input->post('email')),
                 'pos_id'  => $this->input->post('position'),
                 'password'  => hash_password($generate_password),
+                'profile_picture'   => 'no_image.jpg'
             ];
             $last_inserted_user = $this->Crud_model->last_inserted_row('users',$insert_user);
             $last_id = $last_inserted_user->id;

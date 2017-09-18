@@ -58,6 +58,7 @@ $route['auth/login'] = 'login/auth';
 
 //users
 // $route['users/create']  = 'users/add_user';
+$route['user/(:any)/(:any)'] = 'users/info/$1/$2';
 
 $route['default_controller'] = 'login';
 $route['404_override'] = '';

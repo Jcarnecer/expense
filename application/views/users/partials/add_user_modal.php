@@ -8,7 +8,7 @@ $position = $this->Crud_model->fetch('positions');
 
 ?>
 
-        <div id="add-users-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">
+<div id="add-users-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">
   	<div class="modal-dialog">
 
     <!-- Modal content-->

@@ -11,7 +11,7 @@ $(document).ready(function(){
                 if(result === 'success'){
                     $("#signin-icon").removeClass('fa fa-sign-in');
                     $("#signin-icon").addClass('fa fa-spinner fa-pulse fa-fw');
-                    $("#validation").hide();
+                    $("#validation").html("");
                     $("#forgot-password").hide();
                     window.location.href=base_url+"dashboard";
 

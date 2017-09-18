@@ -8,7 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>Expense</title>
+		<title><?= $title ?></title>
 		<script src="assets/js/jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.css" >
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
@@ -35,7 +35,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<?php }elseif($segment == 'users'){ ?>
 				<script src="assets/js/users.js">
 				</script>
-
+			<?php }elseif($segment == 'profile'){ ?>
+				<script src="assets/js/profile.js">
+				</script>
 			<?php } ?>
 	</head>
 	<body>

@@ -24,4 +24,3 @@
         </div>
 
         <?php $this->load->view('users/partials/add_user_modal') ?>
-        <?php $this->load->view('users/partials/users_detail') ?>
