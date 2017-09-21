@@ -15,11 +15,11 @@
           <div class="text-danger" id="error-message-picture"></div>
           <label>Select Profile Picture</label>
           <input type="file" id="profile_pic" class="form-control" name="profile_pic">
-      </div>
-      <div class="modal-footer">
-      <button type="submit" class="btn btn-default">Submit</button>
+          </div>
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
       </div>
     </div>
   </div>

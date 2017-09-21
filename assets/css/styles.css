@@ -1,6 +1,10 @@
 body {
   background-color: #f2f2f2; }
 
+.center-block {
+  display: block;
+  margin: 0 auto; }
+
 .navbar-custom {
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
@@ -38,7 +42,8 @@ body {
   display: none; }
 
 .main-content, .reverse-animation {
-  margin-left: 210px; }
+  margin-left: 210px;
+  overflow: hidden; }
 
 .animation {
   animation: expand .5s;
@@ -107,12 +112,15 @@ body {
 .custom-button {
   background-color: #25CBF2;
   border: none;
+  color: #ffffff;
   margin-bottom: 50px; }
   .custom-button:hover {
     background-color: #15BBE8; }
 
 .table {
-  background: #ffffff; }
+  background: #ffffff;
+  display: block;
+  overflow: auto; }
   .table thead tr th {
     border: none; }
 

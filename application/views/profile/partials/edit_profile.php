@@ -12,6 +12,14 @@
       </div>
       <div class="modal-body">
         <div id="success-message"></div>
+
+        <form id="change-picture-form" method="post">
+            <div class="text-danger" id="error-message-picture"></div>
+            <label>Select Profile Picture</label>
+            <input type="file" id="profile_pic" class="form-control" name="profile_pic">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
         <form id="change-profile-form" method="post">
             <div class="form-group">
             <label>First Name</label>
@@ -31,10 +39,10 @@
             <input type="text" name="email" id="email" class="form-control">
             <div class="text-danger" id="email_err"></div>
             </div>
-            <div class="form-group">
-            <button type="Submit" class="btn btn-info"><i class="fa fa-save m-r-10"></i>Submit</button>
-            </div>
+            <button type="Submit" class="btn custom-button float-right"><i class="fa fa-save m-r-10"></i>Apply Changes</button>
         </form>
+        <br>
+        <h5>Account Security</h5>
         <hr>
         <form id="change-pass-form" method="post">
             <div class="form-group">
@@ -53,22 +61,11 @@
             <div class="text-danger" id="confirm_err"></div>
             </div>
             <div class="form-group">
-            <button type="Submit" class="btn btn-info"><i class="fa fa-save m-r-10"></i>Submit</button>
+            <button type="Submit" class="btn custom-button float-right"><i class="fa fa-save m-r-10"></i>Apply Changes</button>
             </div>
         </form>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
       </div>
     </div>
   </div>
 </div>
-
-<!-- <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-    <div class="card">
-        <div class="card-block text-center">
-            
-            <h2>Edit Profile</h2>
-            <hr>
-
-        </div>
-    </div>
-</div> -->

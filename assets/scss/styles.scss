@@ -4,6 +4,11 @@ body {
     background-color: $lightest-gray;
 }
 
+.center-block {
+    display: block;
+    margin: 0 auto;
+}
+
 .navbar-custom {
     background-color: $white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
@@ -60,6 +65,7 @@ body {
 
 .main-content {
     margin-left: 210px;
+    overflow: hidden;
 }
 
 .animation { 
@@ -140,6 +146,7 @@ body {
 .custom-button {
     background-color: $primary-color;
     border: none;
+    color: $white;
     margin-bottom: 50px;
 
     &:hover {
@@ -149,6 +156,8 @@ body {
 
 .table {
     background: $white;
+    display: block;
+    overflow: auto;
     thead {
         tr {
             th {

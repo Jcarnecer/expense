@@ -13,7 +13,7 @@
   <h2>Profile</h2>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <a data-toggle="modal" href="#profile-picture-modal"><img height="200" id="prof_pic"></a>
+      <a data-toggle="modal" href="#profile-picture-modal"><img height="200" id="prof_pic" class="center-block"></a>
       <!-- <a class="btn btn-info waves-effect" href="<?= base_url().'employee/request_shift/'.$this->session->id?>">Shift</a> -->
       <!-- <a class="btn btn-info waves-effect" href="login/logout"><i class="fa fa-sign-out m-r-10"></i>Logout</a> -->
     </div>
