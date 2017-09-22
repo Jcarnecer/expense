@@ -21,7 +21,7 @@
 						<input class="form-control" id="amount" type="text" name="amount">
 						<label>Receipt</label>
 						<select name="receipt" id="with_receipt" class="form-control">
-							<option value="" disabled selected>-- With Receipt ? -- </option>
+							<option value="" disabled selected>-- With Receipt / Without Receipt -- </option>
 							<option value="1">Yes</option>
 							<option value="0">No</option>
 						</select>
@@ -30,11 +30,8 @@
 						<label for="">Receipt Image</label>
 						<input class="form-control" type="file" name="receipt_image" />
 					</div>
-			</div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">Save</button>
-			</form>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form>
+				<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
 			</div>
 		</div>
   </div>

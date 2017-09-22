@@ -17,7 +17,7 @@
             <div class="text-danger" id="error-message-picture"></div>
             <label>Select Profile Picture</label>
             <input type="file" id="profile_pic" class="form-control" name="profile_pic">
-            <button type="submit" class="btn btn-default">Submit</button>
+            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
         </form>
 
         <form id="change-profile-form" method="post">

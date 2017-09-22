@@ -1,3 +1,6 @@
+html, body {
+  width: 100%; }
+
 body {
   background-color: #f2f2f2; }
 
@@ -8,7 +11,8 @@ body {
 .navbar-custom {
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
-  justify-content: left; }
+  justify-content: left;
+  margin-bottom: 20px; }
 
 #sidebar {
   width: 210px;
@@ -40,6 +44,9 @@ body {
 
 .hidden-toggle {
   display: none; }
+
+.title {
+  display: inline-block; }
 
 .main-content, .reverse-animation {
   margin-left: 210px;
@@ -109,18 +116,25 @@ body {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
 
+.bottom-margin {
+  margin-bottom: 50px; }
+
+.btn {
+  border: none; }
+
 .custom-button {
   background-color: #25CBF2;
   border: none;
-  color: #ffffff;
-  margin-bottom: 50px; }
+  color: #ffffff; }
   .custom-button:hover {
     background-color: #15BBE8; }
 
-.table {
-  background: #ffffff;
+.custom-responsive {
   display: block;
   overflow: auto; }
+
+.table {
+  background: #ffffff; }
   .table thead tr th {
     border: none; }
 
@@ -143,6 +157,5 @@ body {
   .dataTables_wrapper .dataTables_paginate a.paginate_button:focus {
     outline: none; }
   .dataTables_wrapper .dataTables_paginate a#exptbl_next:hover, .dataTables_wrapper .dataTables_paginate a#exptbl_previous:hover {
-    background: #15BBE8;
-    border: 1px solid #15BBE8;
-    color: #ffffff !important; }
+    color: #15BBE8 !important;
+    cursor: pointer; }

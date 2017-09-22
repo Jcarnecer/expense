@@ -1,8 +1,9 @@
 <div class="container">
-    <h3>Classification</h3>
-    <div class="table-responsive">
+    <h3 class="title">Classification</h3>
     <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#add_modal">Add Classification</button>
-        <table class="table table-bordered exp-tbl" id="exptbl">
+    <hr>
+    <!-- <div class="table-responsive"> -->
+        <table class="table table-bordered exp-tbl table-responsive" id="exptbl">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -16,7 +17,7 @@
             
             </tbody>
         </table>
-    </div>
+    <!-- </div> -->
 </div>
 
 <?php $this->load->view('expense/partials/add_classification_modal') ?>

@@ -19,10 +19,8 @@ $position = $this->Crud_model->fetch('positions');
 			</div>
 			<div class="modal-body">
             <form class="form-horizontal" role="form" method="POST" id="register-form">
-            <h2>Create User</h2>
-                    <div class="alert alert-danger text-center " id="validation">
-                    </div>
-                    <hr>
+                <div class="alert alert-danger text-center " id="validation">
+                </div>
                 <div class="form-group has-danger">
                     <label class="sr-only" for="email">E-Mail Address</label>
                     <div class="input-group mb-2 mr-sm-2 mb-sm-0">
@@ -59,11 +57,8 @@ $position = $this->Crud_model->fetch('positions');
                         </select>
                     </div>
                 </div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">Save</button>
-			</form>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
+            </form>
+            <button type="submit" class="btn custom-button float-right">Save</button>
 		</div>
   </div>
 </div>

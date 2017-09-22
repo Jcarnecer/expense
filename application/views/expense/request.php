@@ -1,9 +1,10 @@
 
             <div class="container">
-            <h3>File Reimbursement</h3>
-            <div class="table-responsive">
+            <h3 class="title">File Reimbursement</h3>
+            <!-- <div class="table-responsive"> -->
             <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#request-modal">File Reimbursement</button>
-                <table class="table table-bordered exp-tbl" id="exptbl">
+            <hr>
+                <table class="table table-bordered exp-tbl table-responsive" id="exptbl">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -18,7 +19,7 @@
 
                     </tbody>
                 </table>
-            </div>
+            <!-- </div> -->
         </div>
 
         <?php $this->load->view('expense/partials/request_modal') ?>

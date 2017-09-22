@@ -7,7 +7,7 @@
 
 	<ul class="sidebar-menu">
 		<?php if($this->user->info('pos_id')==3){ //human resource (tentative way)?>
-			<li class="sub-menu">
+			<!-- <li class="sub-menu">
 				<a data-toggle="collapse" href="#expense-sub" aria-expanded="false" aria-controls="expense-sub" >
 					<i class="fa fa-desktop"></i>
 					<span>Expense</span>
@@ -17,11 +17,10 @@
 						<li><a  href="classification">Classification</a></li>
 					
 				</ul>
-			</li>
+			</li> -->
+			<li><a  href="reimbursement">Reimbursement</a></li>
+			<li><a  href="classification">Classification</a></li>
 		<?php } ?>
-		<li><a  href="request">File Reimbursement</a></li>
-		<li><a  href="profile">Profile</a></li>
-		<!-- <li><a href="allowance">My Allowances</a></li> -->
 		<?php if($this->user->info('pos_id')==3){  //tentative ?>
 			<li class="sub-menu">
 				<a href="users" >
@@ -30,6 +29,9 @@
 				</a>
 			</li>
 		<?php } ?>
+		<li><a  href="request">File Reimbursement</a></li>
+		<li><a  href="profile">Profile</a></li>
+		<!-- <li><a href="allowance">My Allowances</a></li> -->
 
 	</ul>
 	<!-- sidebar menu end-->

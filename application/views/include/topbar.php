@@ -6,7 +6,7 @@
 				<span></span>
 				<span></span>
 			</div>
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand mr-auto" href="#">Payak Apps</a>
 			<a class="navbar-text" href="login/logout">Logout</a>
 		</nav>
 	</div>

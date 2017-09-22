@@ -17,11 +17,8 @@
                         <label>Budget</label>
 						<input class="form-control" type="text" id="budget" name="budget">
 					</div>
-			</div>
-			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">Save</button>
-			</form>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</form>
+				<button type="submit" class="btn custom-button float-right">Save</button>
 			</div>
 		</div>
   </div>

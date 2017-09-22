@@ -17,9 +17,9 @@
                     <input type="hidden" id="r-id" name="id">
                     <input type="hidden" id="r-allowance" name="allowance">
                     <input type="hidden" id="r-classification" name="classification">
-				    <button type="submit" class="btn btn-primary">Yes</button>
-                </form>
+				</form>
 				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+				<button type="submit" class="btn custom-button">Yes</button>
 			</div>
 		</div>
   </div>

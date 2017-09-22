@@ -1,6 +1,7 @@
 
 		<div class="container">
         <h3>Reimbursement</h3>
+        <hr>
         <div class="table-responsive">
             <table class="table table-bordered exp-tbl" id="exptbl">
                 <thead>

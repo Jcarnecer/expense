@@ -11,6 +11,7 @@
 
 <div class="container-fluid">
   <h2>Profile</h2>
+  <hr>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
       <a data-toggle="modal" href="#profile-picture-modal"><img height="200" id="prof_pic" class="center-block"></a>
@@ -18,27 +19,39 @@
       <!-- <a class="btn btn-info waves-effect" href="login/logout"><i class="fa fa-sign-out m-r-10"></i>Logout</a> -->
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
       <h2>User Information</h2>
       <?= $this->user->info('lastname') ?>,
       <?= $this->user->info('firstname') ?><br>
       <?= $this->user->info('email') ?>
       <br>
-      <a data-toggle="modal" href="#edit-profile-modal">Edit Account Info</a>
+      <button class="btn custom-button" data-toggle="modal" href="#edit-profile-modal">Edit Account Info</button>
     </div>
+  </div><!-- row -->
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <?php 
+        $classification = $this->Crud_model->fetch('classification');
+        ?>
+        <br>
+        <h3>Remaining Allowance</h3>
+        
+        <table class="table table-responsive">
+          <tbody>
+        
+            <?php foreach($classification as $row): 
+            $c_name = strtolower($row->classification); 
+            $allowance = $row->allowance_per_user;
+            ?>
+            <tr>
+              <th scope="row"><?= $row->classification?></th>
+              <h5></h5>
+              <td><?=$user->$c_name?></td>
+            </tr>
+            <?php endforeach; ?>
 
-    <div class="col-md-12">
-      <?php 
-      $classification = $this->Crud_model->fetch('classification');
-      ?>
-      <h3>Remaining Allowance</h3><br>
-      <?php foreach($classification as $row): 
-          $c_name = strtolower($row->classification); 
-          $allowance = $row->allowance_per_user;
-          ?>
-      <h5><?= $row->classification.': '. $user->$c_name ?></h5>
-      <?php endforeach; ?>
-    </div>
-
+          </tbody>
+        </table>
+      </div><!-- col -->
   </div><!-- row -->
 </div><!-- container -->

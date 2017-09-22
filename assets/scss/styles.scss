@@ -1,5 +1,9 @@
 @import 'custom-variables';
 
+html, body {
+    width: 100%;
+}
+
 body {
     background-color: $lightest-gray;
 }
@@ -13,6 +17,7 @@ body {
     background-color: $white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
     justify-content: left;
+    margin-bottom: 20px;
 }
 
 #sidebar {
@@ -61,6 +66,10 @@ body {
 
 .hidden-toggle {
     display: none;
+}
+
+.title {
+    display: inline-block;
 }
 
 .main-content {
@@ -143,21 +152,31 @@ body {
     transform: rotate(-45deg);
 }
 
+.bottom-margin {
+    margin-bottom: 50px;
+}
+
+.btn {
+    border: none;
+}
+
 .custom-button {
     background-color: $primary-color;
     border: none;
     color: $white;
-    margin-bottom: 50px;
 
     &:hover {
         background-color: $secondary-color;
     }
 }
 
-.table {
-    background: $white;
+.custom-responsive {
     display: block;
     overflow: auto;
+}
+
+.table {
+    background: $white;
     thead {
         tr {
             th {
@@ -204,9 +223,11 @@ body {
 
             &#exptbl_next, &#exptbl_previous {
                 &:hover {
-                    background: $secondary-color;
-                    border: 1px solid $secondary-color;
-                    color: $white !important;
+                    // background: $secondary-color;
+                    // border: 1px solid $secondary-color;
+                    color: $secondary-color !important;
+                    cursor: pointer;
+                    // font-weight: bold;
                 }
             }      
         }

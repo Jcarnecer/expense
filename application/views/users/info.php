@@ -1,32 +1,46 @@
 <?php 
 $classification = $this->Crud_model->fetch('classification');
 ?>
-		<div class="container">
-                    <h3>User Information</h3><br>
+		<div class="container-fluid">
+            <h3>User Information</h3>
+            <hr>
             <div class="row">
-                <div class="col-6">
-                    <h5>Name: <?= $user->firstname .' '.$user->middlename.' '.$user->lastname?></h5>
-                    <h5>Email Address: <?= $user->email ?></h5>
-                    <h5>Position: <?= $position ?></h5>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                    <img class="center-block" height="200px" src="uploads/<?= $user->profile_picture ?>" alt="">
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                    <strong>Name: </strong><?= $user->firstname .' '.$user->middlename.' '.$user->lastname?><br>
+                    <strong>Email Address: </strong><?= $user->email ?><br>
+                    <strong>Position: </strong><?= $position ?><br>
                     <?php if($user->status == 1){ ?>
-                    <h5>Status: Active</h5>
+                    <strong>Status: </strong>Active<br>
                     <?php }else{ ?>
-                        <h5>Status: Inactive</h5>
+                        <strong>Status: </strong>Inactive<br>
                     <?php } ?>
-                    <br>
-                    <h5>Remaining Allowance </h5>
-                    <?php foreach($classification as $row): 
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <h3>Remaining Allowance </h3>
+
+                    <table class="table table-responsive">
+                        <tbody>
+                        
+                        <?php foreach($classification as $row): 
                         $classification = strtolower($row->classification); 
                         $allowance = $row->allowance_per_user;
                         ?>
-                    <h5><?= $row->classification.': '. $user->$classification ?></h5>
-                    <?php endforeach; ?>
-                </div>
+                        <tr>
+                            <th scope="row"><?= $row->classification?></th>
+                            <h5></h5>
+                            <td><?=$user->$classification?></td>
+                        </tr>
+                        <?php endforeach; ?>
 
-                <div class="col-6 pull-right">
-                    <img height="200px" width="50%" src="uploads/<?= $user->profile_picture ?>" alt="">
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+            </div> 
         </div>
 
         <!-- <div id="<?= secret_url('encrypt',$user->id) ?>-profile-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">

@@ -1,8 +1,10 @@
 <?php $classification = $this->Crud_model->fetch('classification') ?>
     <div class="container-fluid">
-        <h3>Add Users</h3>
+        <h3 class="title">Add Users</h3>
         <!-- <div class=""> -->
         <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#add-users-modal">Add Users</button>
+        <hr>
+            
             <table class="table table-bordered exp-tbl" id="exptbl">
                 <thead>
                     <tr>
