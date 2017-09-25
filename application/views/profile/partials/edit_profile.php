@@ -13,12 +13,6 @@
       <div class="modal-body">
         <div id="success-message"></div>
 
-        <form id="change-picture-form" method="post">
-            <div class="text-danger" id="error-message-picture"></div>
-            <label>Select Profile Picture</label>
-            <input type="file" id="profile_pic" class="form-control" name="profile_pic">
-            <!-- <button type="submit" class="btn btn-default">Submit</button> -->
-        </form>
 
         <form id="change-profile-form" method="post">
             <div class="form-group">
