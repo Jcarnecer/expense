@@ -8,6 +8,27 @@ body {
   display: block;
   margin: 0 auto; }
 
+.bottom-margin {
+  margin-bottom: 50px; }
+
+.top-margin-title {
+  margin-top: 70px; }
+
+.btn {
+  border: none; }
+
+.custom-button {
+  background-color: #25CBF2;
+  border: none;
+  color: #ffffff; }
+  .custom-button:hover {
+    background-color: #15BBE8; }
+
+.edit-button {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 20px; }
+
 .navbar-custom {
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.15);
@@ -115,23 +136,6 @@ body {
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
-
-.bottom-margin {
-  margin-bottom: 50px; }
-
-.btn {
-  border: none; }
-
-.custom-button {
-  background-color: #25CBF2;
-  border: none;
-  color: #ffffff; }
-  .custom-button:hover {
-    background-color: #15BBE8; }
-
-.custom-responsive {
-  display: block;
-  overflow: auto; }
 
 .table {
   background: #ffffff; }

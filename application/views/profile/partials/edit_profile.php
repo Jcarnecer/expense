@@ -35,8 +35,8 @@
             </div>
             <button type="Submit" class="btn custom-button float-right"><i class="fa fa-save m-r-10"></i>Apply Changes</button>
         </form>
-        <br>
-        <h5>Account Security</h5>
+        
+        <h5 class="top-margin-title">Account Security</h5>
         <hr>
         <form id="change-pass-form" method="post">
             <div class="form-group">

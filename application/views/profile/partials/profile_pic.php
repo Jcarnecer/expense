@@ -17,9 +17,9 @@
           <input type="file" id="profile_pic" class="form-control" name="profile_pic">
           </div>
           <div class="modal-footer">
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn custom-button">Submit</button>
         </form> 
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
       </div>
     </div>
   </div>
