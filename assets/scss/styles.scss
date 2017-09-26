@@ -85,6 +85,10 @@ body {
     
     }
 
+    .active {
+        background-color: pink;
+    }
+
     ul.sub {
         li {
             padding-left: 30px;
@@ -184,6 +188,10 @@ body {
 //     display: block;
 //     overflow: auto;
 // }
+
+#prof_pic {
+    max-height: 200px;
+}
 
 .table {
     background: $white;

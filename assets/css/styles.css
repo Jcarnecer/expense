@@ -60,6 +60,8 @@ body {
       background-color: #15BBE8;
       border-left: 5px solid #007A9B;
       text-decoration: none; }
+  #sidebar .active {
+    background-color: pink; }
   #sidebar ul.sub li {
     padding-left: 30px; }
 
@@ -136,6 +138,9 @@ body {
   -ms-transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
+
+#prof_pic {
+  max-height: 200px; }
 
 .table {
   background: #ffffff; }
