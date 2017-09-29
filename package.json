@@ -11,6 +11,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "css-reset-and-normalize-sass": "^0.1.2",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.2.1",
     "jquery.nicescroll": "^3.7.6",
     "popper.js": "^1.12.2"

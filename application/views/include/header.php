@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<script src="assets/js/jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.css" >
 		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
-		<link rel="stylesheet" type="text/css" href="assets/fonts/font-awesome.min.css" >
+		<link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" >
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
 		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 		<!-- <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script> -->

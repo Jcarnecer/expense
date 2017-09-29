@@ -17,8 +17,8 @@
                         <label>Budget</label>
 						<input class="form-control" type="text" id="budget" name="budget">
 					</div>
+					<button type="submit" class="btn custom-button float-right">Save</button>
 				</form>
-				<button type="submit" class="btn custom-button float-right">Save</button>
 			</div>
 		</div>
   </div>

@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
-    <script src="assets/js/jquery.min.js"></script>
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script> -->
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/flavored-reset-and-normalize.css" >
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" >
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css" >
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script>
         var base_url = window.location.origin+"/expense/";
@@ -86,7 +85,7 @@
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success" id="login"><i class="fa fa-sign-in" id="signin-icon"></i> Login</button>
+                    <button type="submit" class="btn custom-button" id="login"><i class="fa fa-sign-in" id="signin-icon"></i> Login</button>
                     
                     <!-- <a class="btn btn-link" id="forgot-passowrd" href="">Forgot Your Password?</a> -->
                 </div>
