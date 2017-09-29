@@ -57,8 +57,8 @@ $position = $this->Crud_model->fetch('positions');
                         </select>
                     </div>
                 </div>
+                <button type="submit" class="btn custom-button float-right">Save</button>
             </form>
-            <button type="submit" class="btn custom-button float-right">Save</button>
 		</div>
   </div>
 </div>

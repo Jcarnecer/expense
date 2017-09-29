@@ -53,11 +53,8 @@ $position = $this->Crud_model->fetch('positions');
                         </select>
                     </div>
                 </div>
-			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Save</button>
 			</form>
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
 		</div>
   </div>
 </div>

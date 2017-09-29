@@ -139,6 +139,10 @@ body {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
 
+.custom-responsive {
+  display: block;
+  overflow: auto; }
+
 #prof_pic {
   max-height: 200px; }
 
