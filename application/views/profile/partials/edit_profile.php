@@ -33,10 +33,10 @@
             <input type="text" name="email" id="email" class="form-control">
             <div class="text-danger" id="email_err"></div>
             </div>
-            <button type="Submit" class="btn custom-button float-right"><i class="fa fa-save m-r-10"></i>Apply Changes</button>
+            <button type="Submit" class="btn custom-button float-right">Apply Changes</button>
         </form>
-        <br>
-        <h5>Account Security</h5>
+        
+        <h5 class="top-margin-title">Account Security</h5>
         <hr>
         <form id="change-pass-form" method="post">
             <div class="form-group">
@@ -55,7 +55,7 @@
             <div class="text-danger" id="confirm_err"></div>
             </div>
             <div class="form-group">
-            <button type="Submit" class="btn custom-button float-right"><i class="fa fa-save m-r-10"></i>Apply Changes</button>
+            <button type="Submit" class="btn custom-button float-right">Apply Changes</button>
             </div>
         </form>
         <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->

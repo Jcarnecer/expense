@@ -14,7 +14,7 @@
   <hr>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-      <a data-toggle="modal" href="#profile-picture-modal"><img height="200" id="prof_pic" class="center-block"></a>
+      <a data-toggle="modal" href="#profile-picture-modal"><img id="prof_pic" class="center-block bottom-margin img-fluid"></a>
       <!-- <a class="btn btn-info waves-effect" href="<?= base_url().'employee/request_shift/'.$this->session->id?>">Shift</a> -->
       <!-- <a class="btn btn-info waves-effect" href="login/logout"><i class="fa fa-sign-out m-r-10"></i>Logout</a> -->
     </div>
@@ -24,8 +24,7 @@
       <?= $this->user->info('lastname') ?>,
       <?= $this->user->info('firstname') ?><br>
       <?= $this->user->info('email') ?>
-      <br>
-      <button class="btn custom-button" data-toggle="modal" href="#edit-profile-modal">Edit Account Info</button>
+      <button class="btn custom-button edit-button" data-toggle="modal" href="#edit-profile-modal">Edit Account Info</button>
     </div>
   </div><!-- row -->
   <div class="row">
@@ -33,7 +32,6 @@
         <?php 
         $classification = $this->Crud_model->fetch('classification');
         ?>
-        <br>
         <h3>Remaining Allowance</h3>
         
         <table class="table table-responsive">

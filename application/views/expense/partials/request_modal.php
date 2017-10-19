@@ -30,7 +30,7 @@
 						<label for="">Receipt Image</label>
 						<input class="form-control" type="file" name="receipt_image" />
 					</div>
-				<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
+					<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
 				</form>
 			</div>
 		</div>

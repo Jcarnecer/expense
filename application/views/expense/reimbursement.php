@@ -2,8 +2,8 @@
 		<div class="container">
         <h3>Reimbursement</h3>
         <hr>
-        <div class="table-responsive">
-            <table class="table table-bordered exp-tbl" id="exptbl">
+        <!-- <div class="table-responsive"> -->
+            <table class="table table-bordered exp-tbl table-responsive" id="exptbl">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -19,7 +19,7 @@
                     
                 </tbody>
             </table>
-        </div>
+        <!-- </div> -->
     </div>
 
     <?php $this->load->view('expense/partials/view_reimburse_modal') ?>

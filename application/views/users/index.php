@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-info custom-button float-right" data-toggle="modal" data-target="#add-users-modal">Add Users</button>
         <hr>
             
-            <table class="table table-bordered exp-tbl" id="exptbl">
+            <table class="table table-bordered exp-tbl custom-responsive" id="exptbl">
                 <thead>
                     <tr>
                         <th>ID</th>

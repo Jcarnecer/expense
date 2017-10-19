@@ -13,6 +13,34 @@ body {
     margin: 0 auto;
 }
 
+.bottom-margin {
+    margin-bottom: 50px;
+}
+
+.top-margin-title {
+    margin-top: 70px;
+}
+
+.btn {
+    border: none;
+}
+
+.custom-button {
+    background-color: $primary-color;
+    border: none;
+    color: $white;
+
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+.edit-button {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
 .navbar-custom {
     background-color: $white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
@@ -55,6 +83,10 @@ body {
             text-decoration: none;
         }
     
+    }
+
+    .active {
+        background-color: pink;
     }
 
     ul.sub {
@@ -152,27 +184,13 @@ body {
     transform: rotate(-45deg);
 }
 
-.bottom-margin {
-    margin-bottom: 50px;
-}
-
-.btn {
-    border: none;
-}
-
-.custom-button {
-    background-color: $primary-color;
-    border: none;
-    color: $white;
-
-    &:hover {
-        background-color: $secondary-color;
-    }
-}
-
 .custom-responsive {
     display: block;
     overflow: auto;
+}
+
+#prof_pic {
+    max-height: 200px;
 }
 
 .table {

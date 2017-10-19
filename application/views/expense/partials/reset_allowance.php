@@ -16,10 +16,10 @@
                 <form id="r-a-form" method="post">
                     <input type="hidden" id="r-id" name="id">
                     <input type="hidden" id="r-allowance" name="allowance">
-                    <input type="hidden" id="r-classification" name="classification">
+					<input type="hidden" id="r-classification" name="classification">
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					<button type="submit" class="btn custom-button">Yes</button>
 				</form>
-				<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-				<button type="submit" class="btn custom-button">Yes</button>
 			</div>
 		</div>
   </div>

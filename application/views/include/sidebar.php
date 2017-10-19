@@ -24,7 +24,7 @@
 		<?php if($this->user->info('pos_id')==3 || $this->user->info('pos_id')==1){  //tentative ?>
 			<li class="sub-menu">
 				<a href="users" >
-					<i class="fa fa-users"></i>
+					<!-- <i class="fa fa-users"></i> -->
 					<span>User Management</span>
 				</a>
 			</li>
