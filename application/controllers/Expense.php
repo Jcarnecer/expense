@@ -206,18 +206,16 @@ class Expense extends MY_Controller {
 
 			$old_classification = $get_old_classification->classification;
 			// $this->dbforge->rename_table($old_classification->classification, $edit['classification']);
+			echo json_encode("success");
 			$modify = [
 				$old_classification => [
 					'name'	=> strtolower($edit['classification']),
-					'type'	=> 'varchar(100)'
+					// 'type'	=> 'varchar(100)'
+					'type'	=> 'float(8,2)'
 				],
 			];
 			$this->dbforge->modify_column('users',$modify);
-	
-	
 			$this->Crud_model->update('classification',$edit,$where);
-	
-			echo json_encode("success");
 		}
 
         
