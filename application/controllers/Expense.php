@@ -208,7 +208,7 @@ class Expense extends MY_Controller {
 			// $this->dbforge->rename_table($old_classification->classification, $edit['classification']);
 			$modify = [
 				$old_classification => [
-					'name'	=> $edit['classification'],
+					'name'	=> strtolower($edit['classification']),
 					'type'	=> 'varchar(100)'
 				],
 			];
@@ -278,11 +278,6 @@ class Expense extends MY_Controller {
                 
                 $where = ['id' => $this->input->post('classification')];
                 $get_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
-                // $allowance = $get_classification->allowance - $amount;
-                // $update_classification = [
-                //     'remaining_allowance' => $allowance
-                // ];
-                // $this->Crud_model->update('classification',$update_classification,$where);
 
                 echo json_encode('success');
             }
