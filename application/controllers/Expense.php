@@ -155,7 +155,7 @@ class Expense extends MY_Controller {
             ];
             echo json_encode($error);
         }else{
-
+			
             $insert_column = [
                 clean_data(strtolower($this->input->post('classification'))) 
                 => 
@@ -166,7 +166,7 @@ class Expense extends MY_Controller {
             ];
             
             $this->dbforge->add_column('users',$insert_column);
-
+			
             $insert = [
                 'classification' => clean_data(ucwords($this->input->post('classification'))),
                 'allowance_per_user' =>  clean_data($this->input->post('allowance')),

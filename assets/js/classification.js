@@ -65,7 +65,8 @@ $(document).ready(function(){
                 var result = JSON.parse(data);
                 if(result === 'success'){
                     $('#add_modal').modal('hide');
-                    $("#a-c, #a-a, #a-b").val("");
+					$("#a-c, #a-a, #a-b").val("");
+					bs_notify("<strong>Successfully Inserted Classification</strong>","success","top","right");
                     fetch_classify();
                 }else{
                     $("#a-error").html(result.a_error);
@@ -90,7 +91,9 @@ $(document).ready(function(){
             success: function(data){
                 var result = JSON.parse(data);
                 if(result === 'success'){
-                    $('#edit_modal').modal('hide');
+					$('#edit_modal').modal('hide');
+					bs_notify("<strong>Successfully Edited Classification</strong>","success","top","right");
+                    
                     fetch_classify();
                 }
             },

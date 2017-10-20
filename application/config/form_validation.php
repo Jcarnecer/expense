@@ -46,7 +46,11 @@ $config =
             [
                 'field'		=> 	'classification',
                 'label'   	=> 	'Classification',
-                'rules'  	=> 	'required',
+				'rules'  	=> 	'required|regex_match[/^([a-zA-Z]|\s)+$/]|is_unique[classification.classification]',
+				'errors'	=> [
+								'regex_match'	=> '%s must be letters only.',
+								'is_unique'		=> '%s is already exist.'
+							],
             ],
             [
                 'field'		=> 	'allowance',
