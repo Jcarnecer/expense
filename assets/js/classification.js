@@ -95,6 +95,10 @@ $(document).ready(function(){
 					bs_notify("<strong>Successfully Edited Classification</strong>","success","top","right");
                     
                     fetch_classify();
+                }else{
+                    $("#edit-a-error").html(result.a_error);
+                    $("#edit-b-error").html(result.b_error)
+                    $("#edit-c-error").html(result.c_error);
                 }
             },
             error: function() {

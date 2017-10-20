@@ -12,10 +12,13 @@
                         <input type="hidden" name="id" id="id">
 						<label>Classification</label>
 						<input class="form-control" type="text" id="classification"  name="classification">
+						<h5 class="text-danger" id="edit-c-error"></h5>
 						<label>Allowance</label>
 						<input class="form-control" type="text" id="allowance" name="allowance">
+						<h5 class="text-danger" id="edit-a-error"></h5>
                         <label>Budget</label>
 						<input class="form-control" type="text" id="budget" name="budget">
+						<h5 class="text-danger" id="edit-b-error"></h5>
 					</div>
 					<button type="submit" class="btn custom-button float-right">Save</button>
 				</form>

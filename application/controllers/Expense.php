@@ -166,7 +166,7 @@ class Expense extends MY_Controller {
             ];
             
             $this->dbforge->add_column('users',$insert_column);
-			
+
             $insert = [
                 'classification' => clean_data(ucwords($this->input->post('classification'))),
                 'allowance_per_user' =>  clean_data($this->input->post('allowance')),
@@ -186,15 +186,41 @@ class Expense extends MY_Controller {
     }
     
     public function edit_classification() {
-        $decrypt_id = secret_url('decrypt',$this->input->post('id'));
-        $where = ['id' => $decrypt_id];
-        $edit = [
-            'classification' => clean_data(ucwords($this->input->post('classification'))),
-            'allowance_per_user' => clean_data($this->input->post('allowance')),
-            'budget' => clean_data($this->input->post('budget'))
-        ];
-        $this->Crud_model->update('classification',$edit,$where);
-        echo json_encode("success");
+		if($this->form_validation->run('edit_classification_validate')==FALSE){
+            $error = [
+                'a_error'   => form_error('allowance'),
+                'b_error'   => form_error('budget'),
+                'c_error'   => form_error('classification')
+            ];
+            echo json_encode($error);
+        }else{
+			$decrypt_id = secret_url('decrypt',$this->input->post('id'));
+			$where = ['id' => $decrypt_id];
+			$edit = [
+				'classification' => clean_data(ucwords($this->input->post('classification'))),
+				'allowance_per_user' => clean_data($this->input->post('allowance')),
+				'budget' => clean_data($this->input->post('budget'))
+			];
+			
+			$get_old_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
+
+			$old_classification = $get_old_classification->classification;
+			// $this->dbforge->rename_table($old_classification->classification, $edit['classification']);
+			$modify = [
+				$old_classification => [
+					'name'	=> $edit['classification'],
+					'type'	=> 'varchar(100)'
+				],
+			];
+			$this->dbforge->modify_column('users',$modify);
+	
+	
+			$this->Crud_model->update('classification',$edit,$where);
+	
+			echo json_encode("success");
+		}
+
+        
     }
 
     public function insert_request() {
