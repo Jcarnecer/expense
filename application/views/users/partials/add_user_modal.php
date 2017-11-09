@@ -22,40 +22,28 @@ $position = $this->Crud_model->fetch('positions');
                 <div class="alert alert-danger text-center " id="validation">
                 </div>
                 <div class="form-group has-danger">
-                    <label class="sr-only" for="email">E-Mail Address</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-envelope-open-o"></i></div>
-                        <input type="text" name="email" class="form-control" id="email"
+                    <label for="email">E-mail Address</label>
+                    <input type="text" name="email" class="form-control" id="email"
                                 placeholder="you@example.com"  autofocus>
-                    </div>
                 </div>
             
                 <div class="form-group">
-                    <label class="sr-only" for="firstname">First Name</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user-o"></i></div>
-                        <input type="text" name="firstname" class="form-control" id="firstname"
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname" class="form-control" id="firstname"
                                 placeholder="First Name" >
-                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="lastname">Last Name</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user-o"></i></div>
-                        <input type="text" name="lastname" class="form-control" id="lastname"
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname" class="form-control" id="lastname"
                                 placeholder="Last Name" >
-                    </div>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only">Position</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-suitcase"></i></div>
-                        <select name="position" class="form-control" id="">
-                            <?php foreach($position as $row){ ?>
-                                <option value="<?= $row->id ?>"><?= $row->pos_name ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
+                    <label>Position</label>
+                    <select name="position" class="form-control" id="">
+                        <?php foreach($position as $row){ ?>
+                            <option value="<?= $row->id ?>"><?= $row->pos_name ?></option>
+                        <?php } ?>
+                    </select>
                 </div>
 		    </div>
             <div class="modal-footer">
