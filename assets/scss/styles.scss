@@ -44,8 +44,18 @@ body {
 .navbar-custom {
     background-color: $white;
     box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.15);
+    color: $primary-color;
     justify-content: left;
     margin-bottom: 20px;
+
+    a {
+        color: $dark-gray;
+
+        &:hover {
+            color: $secondary-color;
+            text-decoration: none;
+        }
+    }
 }
 
 #sidebar {
@@ -107,6 +117,9 @@ body {
 .main-content {
     margin-left: 210px;
     overflow: hidden;
+    transition: .5s;
+    -webkit-transition: .5s;
+    -moz-transition: .5s;
 }
 
 .animation { 
@@ -226,7 +239,7 @@ body {
                     border-radius: 50%;
                 }
 
-                &:hover:not(.next, .previous) {
+                &:hover {
                     background: $secondary-color;
                     background-color: $secondary-color;
                     border: 1px solid $secondary-color;
@@ -237,17 +250,65 @@ body {
                 &:focus {
                     outline: none;
                 }
+
+                &:active {
+                    background: none;
+                    box-shadow: none;
+                }
             }
 
             &#exptbl_next, &#exptbl_previous {
                 &:hover {
                     // background: $secondary-color;
                     // border: 1px solid $secondary-color;
+                    background: none;
+                    border: 1px solid transparent;
                     color: $secondary-color !important;
                     cursor: pointer;
                     // font-weight: bold;
                 }
             }      
         }
+    }
+}
+
+.dropdown-item {
+    &:hover, &:active {
+        background-color: $secondary-color;
+        color: $white !important;
+        cursor: pointer;
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #sidebar {
+        height: 100%;
+        margin-left: -210px;
+        position: fixed;
+        z-index: 99;
+    }
+
+    .main-content {
+        margin-left: 0;
+        position: relative;
+    }
+
+    .navbar-custom {
+        z-index: 99;
+    }
+
+    .hidden-toggle {
+        display: block;
+    }
+
+    #nav-icon-close {
+        display: none;
+    }
+
+    .form-horizontal {
+        .control-label {
+            text-align: left;
+        }    
     }
 }
