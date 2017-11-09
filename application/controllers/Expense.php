@@ -54,9 +54,20 @@ class Expense extends MY_Controller {
                 <td><?= $x ?></td>
                 <td><?= $row->classification ?></td>
                 <td><?= $row->allowance_per_user ?></td>
-                <td> 
+                <!-- <td> 
                     <button type="button" class="btn btn-primary edit_classification custom-button" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#edit_modal">Edit</button>
                     <button type="button" class="btn btn-danger reset_allowance" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#reset-allowance-modal">Reset Allowance</button>
+                </td> -->
+                <td>
+                <div class="dropdown">
+                <button class="btn custom-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Action
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item edit_classification" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#edit_modal">Edit</a>
+                    <a class="dropdown-item reset_allowance" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#reset-allowance-modal">Reset Allowance</a>
+                </div>
+              </div>
                 </td>
             </tr>
             <?php 
