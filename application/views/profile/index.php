@@ -28,11 +28,11 @@
     </div>
   </div><!-- row -->
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?php 
         $classification = $this->Crud_model->fetch('classification');
         ?>
-        <h3>Remaining Allowance</h3>
+        <h3>Total Reimbursement Claimed</h3>
         
         <table class="table table-responsive">
           <tbody>

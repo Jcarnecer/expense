@@ -20,8 +20,8 @@ $classification = $this->Crud_model->fetch('classification');
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                <h3>Remaining Allowance </h3>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <h3>Total Reimbursement Claimed</h3>
 
                     <table class="table table-responsive">
                         <tbody>
