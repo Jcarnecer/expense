@@ -21,7 +21,7 @@
 			<li><a  href="reimbursement">Reimbursement</a></li>
 			<li><a  href="classification">Classification</a></li>
 		<?php } ?>
-		<?php if($this->user->info('pos_id')==3){  //tentative ?>
+		<?php if($this->user->info('pos_id')==3 || $this->user->info('pos_id')==1){  //tentative ?>
 			<li class="sub-menu">
 				<a href="users" >
 					<!-- <i class="fa fa-users"></i> -->

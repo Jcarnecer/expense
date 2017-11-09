@@ -46,7 +46,11 @@ $config =
             [
                 'field'		=> 	'classification',
                 'label'   	=> 	'Classification',
-                'rules'  	=> 	'required',
+				'rules'  	=> 	'required|regex_match[/^([a-zA-Z]|\s)+$/]|is_unique[classification.classification]',
+				'errors'	=> [
+								'regex_match'	=> '%s must be letters only.',
+								'is_unique'		=> '%s is already exist.'
+							],
             ],
             [
                 'field'		=> 	'allowance',
@@ -58,7 +62,29 @@ $config =
                 'label'   	=> 	'Budget',
                 'rules'  	=> 	'required',
             ],
-        ],
+		],
+	'edit_classification_validate'
+		=>  [
+				[
+					'field'		=> 	'classification',
+					'label'   	=> 	'Classification',
+					'rules'  	=> 	'required|regex_match[/^([a-zA-Z]|\s)+$/]',
+					'errors'	=> [
+									'regex_match'	=> '%s must be letters only.',
+									'is_unique'		=> '%s is already exist.'
+								],
+				],
+				[
+					'field'		=> 	'allowance',
+					'label'   	=> 	'Allowance',
+					'rules'  	=> 	'required',
+				],
+				[
+					'field'		=> 	'budget',
+					'label'   	=> 	'Budget',
+					'rules'  	=> 	'required',
+				],
+			],
     'edit_info_validate'
     =>	[
             [
