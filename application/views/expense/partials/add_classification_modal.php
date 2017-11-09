@@ -20,12 +20,12 @@
 						<input class="form-control" id="a-b" type="text" name="budget">
 						<h5 class="text-danger" id="b-error"></h5>
 					</div>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
 				</form>
 			</div>
-			<!-- <div class="modal-footer">
-				
-			</div> -->
 		</div>
   </div>
 </div>

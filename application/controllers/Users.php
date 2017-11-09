@@ -59,7 +59,7 @@ class Users extends MY_Controller {
                 
                 <td>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn custom-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Action
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

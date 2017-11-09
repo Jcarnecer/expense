@@ -20,7 +20,10 @@
 						<input class="form-control" type="text" id="budget" name="budget">
 						<h5 class="text-danger" id="edit-b-error"></h5>
 					</div>
-					<button type="submit" class="btn custom-button float-right">Save</button>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
 				</form>
 			</div>
 		</div>

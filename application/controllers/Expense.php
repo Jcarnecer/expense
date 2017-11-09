@@ -56,7 +56,7 @@ class Expense extends MY_Controller {
                 <td><?= $row->allowance_per_user ?></td>
                 <td> 
                     <button type="button" class="btn btn-primary edit_classification custom-button" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#edit_modal">Edit</button>
-                    <button type="button" class="btn btn-secondary reset_allowance" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#reset-allowance-modal">Reset Allowance</button>
+                    <button type="button" class="btn btn-danger reset_allowance" data-toggle="modal" data-budget="<?= $row->budget ?>" data-id="<?= secret_url('encrypt',$row->id) ?>" data-classification="<?= $row->classification ?>" data-allowance="<?= $row->allowance_per_user ?>"  data-target="#reset-allowance-modal">Reset Allowance</button>
                 </td>
             </tr>
             <?php 

@@ -30,6 +30,9 @@
 						<label for="">Receipt Image</label>
 						<input class="form-control" type="file" name="receipt_image" />
 					</div>
+			</div>
+			<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 					<button type="submit" class="btn btn-primary custom-button float-right">Save</button>
 				</form>
 			</div>
