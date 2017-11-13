@@ -1,4 +1,4 @@
-<?php $classification = $this->Crud_model->fetch('classification') ?>
+<?php $classification = $this->Crud_model->fetch('expense_classification') ?>
     <div class="container-fluid">
         <h3 class="title">Add Users</h3>
         <!-- <div class=""> -->

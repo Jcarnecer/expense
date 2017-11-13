@@ -1,5 +1,5 @@
 <?php 
-$classification = $this->Crud_model->fetch('classification');
+$classification = $this->Crud_model->fetch('expense_classification');
 ?>
 		<div class="container-fluid">
             <h3>User Information</h3>

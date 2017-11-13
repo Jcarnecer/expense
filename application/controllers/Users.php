@@ -16,12 +16,12 @@ class Users extends MY_Controller {
         $where = ['id'  => $decrypt_id];
         $user = $this->Crud_model->fetch_tag_row('*','users',$where);
         $pos_where = ['id' => $user->pos_id];
-        $position = $this->Crud_model->fetch_tag_row('*','positions',$pos_where);
+        $position = $this->Crud_model->fetch_tag_row('*','position',$pos_where);
         parent::mainpage('users/info',
             [
                 'title' => $user->firstname .' '.$user->lastname,
                 'user' => $user,
-                'position'  => $position->pos_name
+                'position'  => $position->name
             ]
         );
     }
@@ -29,7 +29,7 @@ class Users extends MY_Controller {
     public function fetch_users() {
         $order_by = 'lastname asc';
         $users = $this->Crud_model->fetch('users','','','',$order_by);
-        $classification = $this->Crud_model->fetch('classification');
+        $classification = $this->Crud_model->fetch('expense_classification');
 
         ?>
             <tr>
@@ -124,7 +124,7 @@ class Users extends MY_Controller {
             ];
             $last_inserted_user = $this->Crud_model->last_inserted_row('users',$insert_user);
             $last_id = $last_inserted_user->id;
-            $classification = $this->Crud_model->fetch('classification');
+            $classification = $this->Crud_model->fetch('expense_classification');
             foreach($classification as $row){
                 $classification = $row->classification;
                 $allowance = $row->allowance_per_user;

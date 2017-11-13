@@ -30,7 +30,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?php 
-        $classification = $this->Crud_model->fetch('classification');
+        $classification = $this->Crud_model->fetch('expense_classification');
         ?>
         <h3>Total Reimbursement Claimed</h3>
         

@@ -4,7 +4,7 @@
 }
 </style>
 <?php 
-$position = $this->Crud_model->fetch('positions');
+$position = $this->Crud_model->fetch('position');
 
 ?>
 

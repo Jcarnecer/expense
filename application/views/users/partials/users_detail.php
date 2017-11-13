@@ -1,5 +1,5 @@
 <?php 
-$position = $this->Crud_model->fetch('positions');
+$position = $this->Crud_model->fetch('position');
 
 ?>
 <div id="u-d-modal" data-backdrop="static" data-keyboard="false" class="modal fade" role="dialog">
