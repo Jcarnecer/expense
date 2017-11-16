@@ -124,6 +124,28 @@ class Users extends MY_Controller {
             ];
             $last_inserted_user = $this->Crud_model->last_inserted_row('users',$insert_user);
             $last_id = $last_inserted_user->id;
+
+			
+			$insert_user_details = [
+				'school'	=> clean_data($this->input->post('school')),
+				'sss_no'	=> clean_data($this->input->post('sss')),
+				'tin_no'	=> clean_data($this->input->post('tin')),
+				'phil_health'	=> clean_data($this->input->post('phil_health')),
+				'year'	=> clean_data($this->input->post('sy')),
+				'course'	=> clean_data($this->input->post('course')),
+				'no_of_hrs'	=>  clean_data($this->input->post('num_hrs')),
+				'user_id'	=>    $last_id,
+				'reg_key'			=>    $generate_key,
+				'profile_picture'	=>    'no_image.jpg',
+				'status'			=> 0, // account not activate
+				'verified_email' 	=> 0, // for email confirmation
+				'start_date'		=> clean_data($this->input->post('start_date')),
+				'shift_id'			=> clean_data($this->input->post('shift')),
+				'remaining'	=>  clean_data($this->input->post('num_hrs'))
+			];
+			$this->Crud_model->insert('user_details',$insert_user_details);
+   
+
             $classification = $this->Crud_model->fetch('expense_classification');
             foreach($classification as $row){
                 $classification = $row->classification;

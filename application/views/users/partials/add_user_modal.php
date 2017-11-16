@@ -41,7 +41,7 @@ $position = $this->Crud_model->fetch('position');
                     <label>Position</label>
                     <select name="position" class="form-control" id="">
                         <?php foreach($position as $row){ ?>
-                            <option value="<?= $row->id ?>"><?= $row->pos_name ?></option>
+                            <option value="<?= $row->id ?>"><?= $row->name ?></option>
                         <?php } ?>
                     </select>
                 </div>
