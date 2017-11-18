@@ -38,20 +38,21 @@ class Users extends MY_Controller {
         $users = $this->Crud_model->fetch('users',$where,'','',$order_by);
         $classification = $this->Crud_model->fetch('expense_classification');
 
-        $x = 1;
+        
         if(!$users == NULL){
+            $x = 1;
+            foreach($users as $row):
 			$user_id = $row->id;
 			$pos_id = $row->pos_id;
 			$where = ['id' => $pos_id];
-			$user_details_where = ['id' => $user_id];
+			$user_details_where = ['user_id' => $user_id];
 			$position = $this->Crud_model->fetch_tag_row('*','position',$where);
 			$user_details = $this->Crud_model->fetch_tag_row('*','user_details',$user_details_where);
-
+            
         ?>
             <tr>
                 <?php 
-                $x = 1;
-                foreach($users as $row): ?>
+                ?>
                 <td><?= $x ?></td>
                 <td><?= $row->firstname.' '.$row->lastname ?></td>
                 <td><?= $row->email ?></td>
@@ -80,7 +81,7 @@ class Users extends MY_Controller {
                         Action
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <?php if($row->status == 1){ ?>
+                        <?php if($user_details->status == 1){ ?>
                             <a class="dropdown-item" href="users/deactivate/<?= secret_url('encrypt',$row->id) ?>">Deactivate</a>
                             <a class="dropdown-item user_details"
                             
@@ -101,27 +102,27 @@ class Users extends MY_Controller {
     }
 
 
-    // public function activate($id){
-    //     $decrypt_id = secret_url('decrypt',$id);
-    //     $where = ['id' => $decrypt_id];
+    public function activate($id){
+     $decrypt_id = secret_url('decrypt',$id);
+         $where = ['id' => $decrypt_id];
 
-    //     $update_status = [
-    //         'status'    => 1
-    //     ];
-    //     $this->Crud_model->update('users',$update_status,$where);
-    //     redirect('users');
-    // }
+         $update_status = [
+             'status'    => 1
+        ];
+         $this->Crud_model->update('user_details',$update_status,$where);
+         redirect('users');
+     }
 
-    // public function deactivate($id){
-    //     $decrypt_id = secret_url('decrypt',$id);
-    //     $where = ['id' => $decrypt_id];
+     public function deactivate($id){
+         $decrypt_id = secret_url('decrypt',$id);
+         $where = ['id' => $decrypt_id];
 
-    //     $update_status = [
-    //         'status'    => 0
-    //     ];
-    //     $this->Crud_model->update('users',$update_status,$where);
-    //     redirect('users');
-    // }
+         $update_status = [
+             'status'    => 0
+         ];
+         $this->Crud_model->update('user_details',$update_status,$where);
+         redirect('users');
+     }
      
     
 
@@ -131,7 +132,7 @@ class Users extends MY_Controller {
             echo json_encode(validation_errors());
         }else{
             
-            $generate_password 	= 	"expense";
+            $generate_password 	= 	"password";
             
             $insert_user = [
                 'firstname'    		=>    clean_data(ucwords($this->input->post('firstname'))),
