@@ -176,7 +176,7 @@ class Expense extends MY_Controller {
                 ],
             ];
             
-            $this->dbforge->add_column('users',$insert_column);
+            $this->dbforge->add_column('expense_users',$insert_column);
 
             $insert = [
                 'classification' => clean_data(ucwords($this->input->post('classification'))),
@@ -189,7 +189,7 @@ class Expense extends MY_Controller {
                 clean_data(strtolower($this->input->post('classification')))
                 =>  clean_data($this->input->post('allowance'))
             ];
-            $this->Crud_model->update('users',$insert_allowance);
+            $this->Crud_model->update('expense_users',$insert_allowance);
 
             echo json_encode("success");
         }
@@ -225,7 +225,7 @@ class Expense extends MY_Controller {
 					'type'	=> 'float(8,2)'
 				],
 			];
-			$this->dbforge->modify_column('users',$modify);
+			$this->dbforge->modify_column('expsense_users',$modify);
 			$this->Crud_model->update('expense_classification',$edit,$where);
 		}
 
@@ -256,7 +256,7 @@ class Expense extends MY_Controller {
         $classification = $this->Crud_model->fetch_tag_row('*','expense_classification',$where);
 
         $user_where = ['id' => $this->user->info('id')];
-        $user = $this->Crud_model->fetch_tag_row('*','users',$user_where);
+        $user = $this->Crud_model->fetch_tag_row('*','expense_users',$user_where);
 
         $classify_name = strtolower($classification->classification);
         $user_classification_col = $user->$classify_name;
@@ -336,14 +336,14 @@ class Expense extends MY_Controller {
         
         //user
         $where_user = ['id' => $reimbursement->user_id];
-        $user = $this->Crud_model->fetch_tag_row('*','users',$where_user);
+        $user = $this->Crud_model->fetch_tag_row('*','expense_users',$where_user);
         $less_allowance = $user->$classification_name - $reimbursement->amount;
         $user_allowance = $user->$classification_name;
         if($less_allowance < $user_allowance){
             $update_status = [
                 $classification_name => $less_allowance
             ];
-            $this->Crud_model->update('users',$update_status,$where_user);
+            $this->Crud_model->update('expense_users',$update_status,$where_user);
             redirect('reimbursement');
         }else{
             echo "
@@ -366,6 +366,6 @@ class Expense extends MY_Controller {
             $classify_name => $classify_allowance
         ];
 
-        $this->Crud_model->update('users',$update_user);
+        $this->Crud_model->update('expense_users',$update_user);
     }
 }

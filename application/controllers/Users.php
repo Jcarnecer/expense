@@ -14,7 +14,7 @@ class Users extends MY_Controller {
     public function info($name,$id) {
         $decrypt_id = secret_url('decrypt',$id);
         $where = ['id'  => $decrypt_id];
-        $user = $this->Crud_model->fetch_tag_row('*','users',$where);
+        $user = $this->Crud_model->fetch_tag_row('*','expense_users',$where);
         $pos_where = ['id' => $user->pos_id];
         $position = $this->Crud_model->fetch_tag_row('*','position',$pos_where);
         parent::mainpage('users/info',
@@ -35,7 +35,7 @@ class Users extends MY_Controller {
 		}else{
 			$where = ['pos_id >' => '1']; //not include admin
 		}
-        $users = $this->Crud_model->fetch('users',$where,'','',$order_by);
+        $users = $this->Crud_model->fetch('expense_users',$where,'','',$order_by);
         $classification = $this->Crud_model->fetch('expense_classification');
 
         
@@ -45,9 +45,8 @@ class Users extends MY_Controller {
 			$user_id = $row->id;
 			$pos_id = $row->pos_id;
 			$where = ['id' => $pos_id];
-			$user_details_where = ['user_id' => $user_id];
 			$position = $this->Crud_model->fetch_tag_row('*','position',$where);
-			$user_details = $this->Crud_model->fetch_tag_row('*','user_details',$user_details_where);
+		
             
         ?>
             <tr>
@@ -56,7 +55,7 @@ class Users extends MY_Controller {
                 <td><?= $x ?></td>
                 <td><?= $row->firstname.' '.$row->lastname ?></td>
                 <td><?= $row->email ?></td>
-                <?php if($user_details->status==1){ ?>
+                <?php if($row->status==1){ ?>
                         <td>Active</td>
                 <?php }else{ ?>
                         <td>Inactive</td>
@@ -81,7 +80,7 @@ class Users extends MY_Controller {
                         Action
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <?php if($user_details->status == 1){ ?>
+                        <?php if($row->status == 1){ ?>
                             <a class="dropdown-item" href="users/deactivate/<?= secret_url('encrypt',$row->id) ?>">Deactivate</a>
                             <a class="dropdown-item user_details"
                             
@@ -109,7 +108,7 @@ class Users extends MY_Controller {
          $update_status = [
              'status'    => 1
         ];
-         $this->Crud_model->update('user_details',$update_status,$where);
+         $this->Crud_model->update('expense_users',$update_status,$where);
          redirect('users');
      }
 
@@ -120,7 +119,7 @@ class Users extends MY_Controller {
          $update_status = [
              'status'    => 0
          ];
-         $this->Crud_model->update('user_details',$update_status,$where);
+         $this->Crud_model->update('expense_users',$update_status,$where);
          redirect('users');
      }
      
@@ -143,30 +142,8 @@ class Users extends MY_Controller {
                 'password'  => hash_password($generate_password),
                 'profile_picture'   => 'no_image.jpg'
             ];
-            $last_inserted_user = $this->Crud_model->last_inserted_row('users',$insert_user);
+            $last_inserted_user = $this->Crud_model->last_inserted_row('expense_users',$insert_user);
             $last_id = $last_inserted_user->id;
-
-			
-			$insert_user_details = [
-				'school'	=> clean_data($this->input->post('school')),
-				'sss_no'	=> clean_data($this->input->post('sss')),
-				'tin_no'	=> clean_data($this->input->post('tin')),
-				'phil_health'	=> clean_data($this->input->post('phil_health')),
-				'year'	=> clean_data($this->input->post('sy')),
-				'course'	=> clean_data($this->input->post('course')),
-				'no_of_hrs'	=>  clean_data($this->input->post('num_hrs')),
-				'user_id'	=>    $last_id,
-				'reg_key'			=>    $generate_key,
-				'profile_picture'	=>    'no_image.jpg',
-				'status'			=> 0, // account not activate
-				'verified_email' 	=> 0, // for email confirmation
-				'start_date'		=> clean_data($this->input->post('start_date')),
-				'shift_id'			=> clean_data($this->input->post('shift')),
-				'remaining'	=>  clean_data($this->input->post('num_hrs'))
-			];
-			$this->Crud_model->insert('user_details',$insert_user_details);
-   
-
             $classification = $this->Crud_model->fetch('expense_classification');
             foreach($classification as $row){
                 $classification = $row->classification;
@@ -176,9 +153,8 @@ class Users extends MY_Controller {
                     $classify_lowercase => $allowance
                 ];
                 $where = ['id' => $last_id];
-                $this->Crud_model->update('users',$data,$where);
+                $this->Crud_model->update('expense_users',$data,$where);
             }
-
             echo json_encode('success');
         }
     }

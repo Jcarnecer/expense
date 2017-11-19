@@ -19,7 +19,7 @@ class Login extends MY_Controller {
                     $email = clean_data($this->input->post('email'));
                     $password = clean_data($this->input->post('password'));
                     $where = array('email'=>$email);
-                    $get_user = $this->Crud_model->fetch_tag_row('*','users',$where);
+                    $get_user = $this->Crud_model->fetch_tag_row('*','expense_users',$where);
         
                     if($get_user) {
                         $check_password = $get_user->password;

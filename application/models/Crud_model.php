@@ -164,16 +164,16 @@ class Crud_model extends CI_Model{
 		$this->db->where($where);
 		$this->db->from('expense_reimbursement');
 		$this->db->order_by('expense_reimbursement.created_at','desc');
-		$this->db->join('users', 'expense_reimbursement.user_id = users.id', 'inner');
+		$this->db->join('expense_users', 'expense_reimbursement.user_id = expense_users.id', 'inner');
 		$query = $this->db->get();
 		return $query->row();
 	}
 
 	public function join_user_reimbursement_result() {
 		$this->db->select('*,expense_reimbursement.id as rid, expense_reimbursement.status as rstatus, expense_reimbursement.created_at as rcreated_at');
-		$this->db->from('users');
+		$this->db->from('expense_users');
 		$this->db->order_by('rcreated_at','desc');
-		$this->db->join('expense_reimbursement', 'expense_reimbursement.user_id = users.id', 'inner');
+		$this->db->join('expense_reimbursement', 'expense_reimbursement.user_id = expense_users.id', 'inner');
 		$query = $this->db->get();
 		return $query->result();
 	}

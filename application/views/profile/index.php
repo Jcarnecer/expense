@@ -3,7 +3,7 @@
   // $user=$this->Crud_model->fetch_tag_row('*','users','$userwhere');
   $id = $this->user->info('id');
   $where = ['id'  => $id];
-  $user = $this->Crud_model->fetch_tag_row('*','users',$where);
+  $user = $this->Crud_model->fetch_tag_row('*','expense_users',$where);
 ?>
 
 <?php $this->load->view('profile/partials/profile_pic') ?>

@@ -22,7 +22,7 @@ $config =
             [
                 'field'		=> 	'email',
                 'label'   	=> 	'Email address',
-                'rules'   	=> 	'required|valid_email|is_unique[users.email]',
+                'rules'   	=> 	'required|valid_email|is_unique[expense_users.email]',
                 'errors'    => [
                                     'is_unique' => '%s already taken.'
                                 ]

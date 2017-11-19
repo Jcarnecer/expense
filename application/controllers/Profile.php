@@ -37,7 +37,7 @@ class Profile extends MY_Controller {
 				'email' => clean_data($this->input->post('email')),
 			];
 			$where = array('id' => $this->user->info('id'));
-			$this->Crud_model->update('users',$profile,$where);
+			$this->Crud_model->update('expense_users',$profile,$where);
 
 			echo json_encode("success");
 		}
@@ -61,7 +61,7 @@ class Profile extends MY_Controller {
                 'password'  => hash_password(clean_data($this->input->post('npassword')))
             );
             $where = array('id' => $this->user->info('id'));
-            $this->Crud_model->update('users',$newpass,$where);
+            $this->Crud_model->update('expense_users',$newpass,$where);
 
             echo json_encode("success");
         }
@@ -69,7 +69,7 @@ class Profile extends MY_Controller {
 
 	public function old_pass_validate($oldpass) {
         $where = array('id' => $this->user->info('id'));
-        $check_old_password = $this->Crud_model->fetch_tag_row('password','users',$where);
+        $check_old_password = $this->Crud_model->fetch_tag_row('password','expense_users',$where);
         if($oldpass == '') {
             $this->form_validation->set_message('old_pass_validate','%s field is required');
             return false;
@@ -100,7 +100,7 @@ class Profile extends MY_Controller {
 				'profile_picture' => $this->upload->data('file_name'),
 			];
 			$where = array('id' => $this->user->info('id'));
-			$this->Crud_model->update('users',$update,$where);
+			$this->Crud_model->update('expense_users',$update,$where);
 			echo json_encode("success");
 		}
 	}
