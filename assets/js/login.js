@@ -3,7 +3,7 @@
 $(document).ready(function(){
     $("#login-form").on('submit',function(e) {
         $.ajax({
-            url: base_url + 'auth/login',
+            url: 'auth/login',
             data:$("#login-form").serialize(),
             type: "POST",
             success: function(data) {
@@ -13,7 +13,7 @@ $(document).ready(function(){
                     $("#signin-icon").addClass('fa fa-spinner fa-pulse fa-fw');
                     $("#validation").html("");
                     $("#forgot-password").hide();
-                    window.location.href=base_url+"dashboard";
+                    window.location.href="dashboard";
 
                 }else{
                     $("#validation").html(result);

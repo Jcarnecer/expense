@@ -1,6 +1,6 @@
 function fetch_request() {
     $.ajax({
-        url: base_url + 'expense/fetch_request',
+        url: 'expense/fetch_request',
         type: "POST",
         success: function(data){
             $("#request_data").html(data);
@@ -24,7 +24,7 @@ $(document).ready(function() {
     $("#request-form").on('submit',function(e){
         var form = new FormData(document.getElementById("request-form"));
         $.ajax({
-            url: base_url + 'expense/insert_request',
+            url: 'expense/insert_request',
             type: "POST",
             data: form,
             processData: false, // tell jQuery not to process the data

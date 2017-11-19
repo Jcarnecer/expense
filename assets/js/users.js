@@ -1,6 +1,6 @@
 function fetch_users () {
     $.ajax({
-        url: base_url + 'users/fetch_users',
+        url: 'users/fetch_users',
         type: "POST",
         success: function(data){
             $("#users_data").html(data);
@@ -13,7 +13,7 @@ function fetch_users () {
 $(document).ready(function() {
     $("#register-form").on('submit',function(e){
         $.ajax({
-            url: base_url + 'users/auth',
+            url: 'users/auth',
             type: "POST",
             data: $("#register-form").serialize(),
             success: function(data){

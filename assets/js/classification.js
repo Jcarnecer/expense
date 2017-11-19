@@ -1,6 +1,6 @@
 function fetch_classify() {
     $.ajax({
-        url: base_url + "expense/fetch_classification",
+        url: "expense/fetch_classification",
         method: "POST",
         success: function(data) {
             $("#classification-data").html(data);
@@ -39,7 +39,7 @@ $(document).on('click','.reset_allowance',function(){
 $(document).ready(function(){
     $("#r-a-form").on('submit',function(e){
         $.ajax({
-            url: base_url + 'expense/approve_reset',
+            url: 'expense/approve_reset',
             method: "POST",
             data: $("#r-a-form").serialize(),
             success: function(data){
@@ -58,7 +58,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#a-c-form").on('submit',function(e){
         $.ajax({
-            url: base_url + 'expense/insert_classification',
+            url: 'expense/insert_classification',
             method: "POST",
             data: $("#a-c-form").serialize(),
             success: function(data){
@@ -85,7 +85,7 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#e-c-form").on('submit',function(e){
         $.ajax({
-            url: base_url + 'expense/edit_classification',
+            url: 'expense/edit_classification',
             method: "POST",
             data: $("#e-c-form").serialize(),
             success: function(data){
