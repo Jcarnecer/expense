@@ -225,7 +225,7 @@ class Expense extends MY_Controller {
 					'type'	=> 'float(8,2)'
 				],
 			];
-			$this->dbforge->modify_column('expsense_users',$modify);
+			$this->dbforge->modify_column('expense_users',$modify);
 			$this->Crud_model->update('expense_classification',$edit,$where);
 		}
 
