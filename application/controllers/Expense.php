@@ -270,7 +270,8 @@ class Expense extends MY_Controller {
                 echo json_encode('Insuffient Allowance for '. $classification->classification);
             }else{
                 if($this->input->post('receipt') == 1) {
-                    $r_img = $this->upload->data('file_name');
+                    // $r_img = $this->upload->data('file_name');
+                  $r_img=\Cloudinary\Uploader::upload($_FILES['receipt']['tmp_name']);
                 }else{
                     $r_img = 'noimage.png';
                 }
