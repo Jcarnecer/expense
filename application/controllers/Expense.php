@@ -272,7 +272,7 @@ class Expense extends MY_Controller {
                 if($this->input->post('receipt') == 1) {
                     // $r_img = $this->upload->data('file_name');
                     $this->load->library('cloudinarylib');
-                  $r_img=\Cloudinary\Uploader::upload($_FILES['receipt']['tmp_name']);
+                  $r_img=\Cloudinary\Uploader::upload($_FILES['receipt_image']['tmp_name']);
                 }else{
                     $r_img = 'noimage.png';
                 }
