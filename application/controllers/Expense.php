@@ -282,7 +282,7 @@ class Expense extends MY_Controller {
                     'classification_id' => clean_data($this->input->post('classification')),
                     'receipt'   => $this->input->post('receipt'),
                     'amount'    => $amount,
-                    'receipt_img'   => $r_img
+                    'receipt_img'   => $r_img['url']
                 ];
     
                 $this->Crud_model->insert('expense_reimbursement',$insert);
