@@ -15,7 +15,7 @@ $(document).on('click','#reimbursement-details',function() {
     var receipt_img = $(this).data('receipt-img');
     var amount = $(this).data('amount');
     $("#name").html(name);
-    $('#receipt-img').attr('src','assets/uploads/'+receipt_img);
+    $('#receipt-img').attr('src',receipt_img);
     $("#amount").html("&#8369 "+amount);
 
 });
