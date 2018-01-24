@@ -23,7 +23,7 @@ class Cloudinarylib {
         \Cloudinary::config(array(
             "cloud_name" => "hjp72kzcv",
             "api_key" => "335782252665121", /*874837483274837*/
-            "api_secret" => "IcUeCQ6J4tHMmqqoxRZAtY0QXF0s" /* a676b67565c6767a6767d6767f676fe1 */
+            "api_secret" => "IcUeCQ6J4tHMmqqoxRZAtY0QXF0" /* a676b67565c6767a6767d6767f676fe1 */
         ));
     }
 }
