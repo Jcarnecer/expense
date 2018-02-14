@@ -167,33 +167,42 @@ class Expense extends MY_Controller {
             echo json_encode($error);
         }else{
 			
-            $insert_column = [
-                clean_data(strtolower($this->input->post('classification'))) 
-                => 
-                [
-                    'type'  => 'float(8,2)',
-                    'null'  => TRUE
-                ],
-            ];
+            // $insert_column = [
+            //     clean_data(strtolower($this->input->post('classification'))) 
+            //     => 
+            //     [
+            //         'type'  => 'float(8,2)',
+            //         'null'  => TRUE
+            //     ],
+            // ];
             
-            $this->dbforge->add_column('expense_users',$insert_column);
+            // $this->dbforge->add_column('expense_users',$insert_column);
 
             $insert = [
                 'classification' => clean_data(ucwords($this->input->post('classification'))),
                 'allowance_per_user' =>  clean_data($this->input->post('allowance')),
                 'budget' =>  clean_data($this->input->post('budget'))
             ];
-            $this->Crud_model->insert('expense_classification',$insert);
+            $classification=$this->Crud_model->insert('expense_classification',$insert);
+           
+            $users=$this->Crud_model->fetch('users',['company_id'=>$this->session->user->company_id]);
+            foreach($users as $row){
+                
+                $insert_users_classification=[
+                     'users_id'=>$row->id,
+                     'classification_id' =>$classification->id,
+                     'remaining_reimbursement'=>clean_data($this->input->post('allowance'))
+                ];
+                $this->Crud_model->insert('expense_users_classification',$insert_users_classification);
+            // $insert_allowance = [
+            //     clean_data(strtolower($this->input->post('classification')))
+            //     =>  clean_data($this->input->post('allowance'))
+            // ];
+            // $this->Crud_model->update('expense_users',$insert_allowance);
 
-            $insert_allowance = [
-                clean_data(strtolower($this->input->post('classification')))
-                =>  clean_data($this->input->post('allowance'))
-            ];
-            $this->Crud_model->update('expense_users',$insert_allowance);
-
-            echo json_encode("success");
-        }
-       
+                echo json_encode("success");
+             }
+         }
     }
     
     public function edit_classification() {
