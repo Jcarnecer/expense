@@ -60,6 +60,6 @@ $route['auth/login'] = 'login/auth';
 // $route['users/create']  = 'users/add_user';
 $route['user/(:any)/(:any)'] = 'users/info/$1/$2';
 
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'dashboard/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

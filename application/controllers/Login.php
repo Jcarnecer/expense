@@ -9,6 +9,8 @@ class Login extends MY_Controller {
                 'title' => 'Login',
             ]
         );
+
+     
     }
 
     public function auth() {
@@ -26,7 +28,7 @@ class Login extends MY_Controller {
                     "password"      => $_POST["user_password"]
                 ];
 
-                $user = $this->Crud_model->fetch($login_details);
+                $user = $this->Crud_model->fetch('users',$login_details);
                 
                 if($user != null) {
                     

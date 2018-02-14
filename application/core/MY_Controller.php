@@ -11,15 +11,15 @@ class MY_Controller	extends CI_Controller
 		// $this->Crud_model->set_update();
 	}
 	
-	private function no_session() {
-        if(!$this->session->userdata('user_logged_in')) {
+	public function no_session() {
+        if(!$this->session->userdata('user')) {
             redirect('login');
         }
     }
 
-    private function with_session() {
-    	if($this->session->userdata('user_logged_in')) {
-            redirect('dashboard');
+    public function with_session() {
+    	if($this->session->has_userdata('user')) {
+           return redirect('dashboard');
         }
     }
 
