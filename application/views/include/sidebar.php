@@ -6,7 +6,12 @@
 	</div>
 
 	<ul class="sidebar-menu">
-		<?php if($this->user->info('role')==3){ //human resource (tentative way)?>
+		<?php
+		 $position = $this->user->info('role');
+		 $where = array('role_id' => $position);
+		 $permission=$this->Crud_model->fetch('roles_permissions',$where,array('EXP_ADMIN,EXP_EMP')); 
+		
+		if($permission[0]->permission_id=="EXP_ADMIN"){ //human resource (tentative way)?>
 			<!-- <li class="sub-menu">
 				<a data-toggle="collapse" href="#expense-sub" aria-expanded="false" aria-controls="expense-sub" >
 					<i class="fa fa-desktop"></i>
@@ -21,16 +26,16 @@
 			<li><a  href="reimbursement">Reimbursement</a></li>
 			<li><a  href="classification">Classification</a></li>
 		<?php } ?>
-			<?php if($this->user->info('pos_id')==3 || $this->user->info('pos_id')==1){  //tentative ?>
-				<li class="sub-menu">
+			<?php if($permission[0]->permission_id=="EXP_ADMIN" || $permission[0]->permission_id=="EXP_ADMIN"){  //tentative ?>
+				<!-- <li class="sub-menu">
 					<a href="users" >
 						<!-- <i class="fa fa-users"></i> -->
-						<span>User Management</span>
+						<!-- <span>User Management</span>
 					</a>
-				</li>
-			<?php } ?>
+				</li> -->
+			<?php } ?> 
 		<li><a  href="request">File Reimbursement</a></li>
-		<li><a  href="profile">Profile</a></li>
+		
 		<!-- <li><a href="allowance">My Allowances</a></li> -->
 
 	</ul>
