@@ -265,7 +265,7 @@ class Expense extends MY_Controller {
         $classification = $this->Crud_model->fetch_tag_row('*','expense_classification',$where);
 
         $user_where = ['id' => $this->user->info('id')];
-        $user = $this->Crud_model->fetch_tag_row('*','expense_users',$user_where);
+        $user = $this->Crud_model->fetch_tag_row('*','users',$user_where);
 
         $classify_name = strtolower($classification->classification);
         $user_classification_col = $user->$classify_name;
