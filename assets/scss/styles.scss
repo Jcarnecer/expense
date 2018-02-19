@@ -62,7 +62,7 @@ body {
     width: 210px;
     height: 100%;
     position: fixed;
-    background: $primary-color;
+    background: $dark-blue;
     overflow-y: scroll;
     transition: .5s;
     -webkit-transition: .5s;
@@ -88,15 +88,15 @@ body {
         white-space: nowrap;
 
         &:hover {
-            background-color: $secondary-color;
-            border-left: 5px solid $dark-blue;
+            background-color: $navy-blue;
+            border-left: 5px solid $secondary-color;
             text-decoration: none;
         }
     
     }
 
     .active {
-        background-color: pink;
+        background-color: $navy-blue;
     }
 
     ul.sub {
@@ -122,33 +122,21 @@ body {
     -moz-transition: .5s;
 }
 
-.animation { 
-    animation: expand .5s;
-    margin-left: 0;
-}
-
-.reverse-animation { 
-    @extend .main-content;
-    animation: reverse-expand .5s;
-}
-
-@keyframes expand {
-    from {margin-left: 210px;}
-    to {margin-left: 0px;}
-}
-
-@keyframes reverse-expand {
-    from {margin-left: 0px;}
-    to {margin-left: 210px;}
-}
-
 #nav-icon-close {
     float: right;
     margin: 10px;
+    
+    span {
+        background: $white;
+    }
 }
 
 #nav-icon-open {
     margin-right: 10px;
+
+    span {
+        background: $dark-gray;
+    }
 }
 
 .custom-toggle {
@@ -159,7 +147,6 @@ body {
 }
   
 .custom-toggle span {
-    background: $dark-blue;
     border-radius: 9px;
     display: block;
     height: 3px;
