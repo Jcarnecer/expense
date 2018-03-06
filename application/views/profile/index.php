@@ -3,7 +3,7 @@
   // $user=$this->Crud_model->fetch_tag_row('*','users','$userwhere');
   $id = $this->user->info('id');
   $where = ['id'  => $id];
-  $user = $this->Crud_model->fetch_tag_row('*','users',$where);
+  $user = $this->Crud_model->fetch_tag_row('*','expense_users',$where);
 ?>
 
 <?php $this->load->view('profile/partials/profile_pic') ?>
@@ -30,7 +30,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <?php 
-        $classification = $this->Crud_model->fetch('classification');
+        $classification = $this->Crud_model->fetch('expense_classification');
         ?>
         <h3>Total Reimbursement Claimed</h3>
         

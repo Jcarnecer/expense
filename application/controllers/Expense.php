@@ -6,7 +6,7 @@ class Expense extends MY_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->classification = $this->Crud_model->fetch('classification','','','','classification asc');
+        $this->classification = $this->Crud_model->fetch('expense_classification',['company_id'=>$this->session->user->company_id],'','','classification asc');
         
     }
     
@@ -78,8 +78,8 @@ class Expense extends MY_Controller {
 
     function fetch_request() {
         $order_by = 'created_at desc';
-        $where = ['user_id' => $this->user->info('id')];
-        $request = $this->Crud_model->fetch('reimbursement',$where,'','',$order_by);
+        $where = ['user_id' => $this->user->info('id'),'company_id'=>$this->session->user->company_id];
+        $request = $this->Crud_model->fetch('expense_reimbursement',$where,'','',$order_by);
         $x = 1;
         if(!$request == NULL){
             foreach($request as $row): 
@@ -89,7 +89,7 @@ class Expense extends MY_Controller {
             ?>
             <tr>
                 <td><?= $x ?></td>
-                <td><?= ucwords($users->firstname).' '.ucwords($users->lastname)  ?></td>
+                <td><?= ucwords($users->first_name).' '.ucwords($users->last_name)  ?></td>
                 <td><?= $classify_reimbursement->classification ?></td>
                 <td>&#8369 <?= $row->amount ?></td>
                 <td><?= date('F j, Y',strtotime($row->created_at)) ?></td>
@@ -118,7 +118,7 @@ class Expense extends MY_Controller {
             ?>
             <tr>
                 <td><?= $x ?></td>
-                <td><?= ucwords($row->firstname).' '.ucwords($row->lastname) ?></td>
+                <td><?= ucwords($row->first_name).' '.ucwords($row->last_name) ?></td>
                 <td><?= $classify_reimbursement->classification ?></td>
                 <td><?= date('F j, Y',strtotime($row->rcreated_at)) ?></td>
                 <td>&#8369 <?= $row->amount ?></td>
@@ -136,14 +136,14 @@ class Expense extends MY_Controller {
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <?php if($row->rstatus == 0){ ?>
-                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->first_name).' '.ucwords($row->last_name) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
                     
                   <?php }elseif($row->rstatus == 2){ ?>
-                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->first_name).' '.ucwords($row->last_name) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
                     <a class="dropdown-item" href="expense/approve/<?= secret_url('encrypt',$row->rid) ?>">Approve</a>
                     <a class="dropdown-item" href="expense/reject/<?= secret_url('encrypt',$row->rid) ?>">Reject</a>
                   <?php }else{ ?>
-                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->firstname).' '.ucwords($row->lastname) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
+                    <a class="dropdown-item" id="reimbursement-details" data-toggle="modal" data-amount="<?= $row->amount ?>" data-name = "<?= ucwords($row->first_name).' '.ucwords($row->last_name) ?>" data-classify="<?= $classify_reimbursement->classification ?>" data-receipt-img="<?= $row->receipt_img ?>" href="#view-request-modal">View</a>
                     
                   <?php } ?>
                   <!--  //0 = rejected 1 = approve 2 = pending, -->
@@ -167,33 +167,43 @@ class Expense extends MY_Controller {
             echo json_encode($error);
         }else{
 			
-            $insert_column = [
-                clean_data(strtolower($this->input->post('classification'))) 
-                => 
-                [
-                    'type'  => 'float(8,2)',
-                    'null'  => TRUE
-                ],
-            ];
+            // $insert_column = [
+            //     clean_data(strtolower($this->input->post('classification'))) 
+            //     => 
+            //     [
+            //         'type'  => 'float(8,2)',
+            //         'null'  => TRUE
+            //     ],
+            // ];
             
-            $this->dbforge->add_column('users',$insert_column);
+            // $this->dbforge->add_column('expense_users',$insert_column);
 
             $insert = [
                 'classification' => clean_data(ucwords($this->input->post('classification'))),
                 'allowance_per_user' =>  clean_data($this->input->post('allowance')),
-                'budget' =>  clean_data($this->input->post('budget'))
+                'budget' =>  clean_data($this->input->post('budget')),
+                'company_id'=>$this->session->user->company_id
             ];
-            $this->Crud_model->insert('classification',$insert);
+            $classification=$this->Crud_model->last_inserted_row('expense_classification',$insert);
+            $users=$this->Crud_model->fetch('users',['company_id'=>$this->session->user->company_id]);
+            foreach($users as $row){
+                
+                $insert_users_classification=[
+                     'users_id'=>$row->id,
+                      'classification_id' =>$classification->id,
+                     'remaining_reimbursement'=>clean_data($this->input->post('allowance'))
+                ];
+                $this->Crud_model->insert('expense_users_classification',$insert_users_classification);
+            // $insert_allowance = [
+            //     clean_data(strtolower($this->input->post('classification')))
+            //     =>  clean_data($this->input->post('allowance'))
+            // ];
+            // $this->Crud_model->update('expense_users',$insert_allowance);
 
-            $insert_allowance = [
-                clean_data(strtolower($this->input->post('classification')))
-                =>  clean_data($this->input->post('allowance'))
-            ];
-            $this->Crud_model->update('users',$insert_allowance);
-
-            echo json_encode("success");
-        }
-       
+               
+             }
+             echo json_encode('success');
+         }
     }
     
     public function edit_classification() {
@@ -206,27 +216,28 @@ class Expense extends MY_Controller {
             echo json_encode($error);
         }else{
 			$decrypt_id = secret_url('decrypt',$this->input->post('id'));
-			$where = ['id' => $decrypt_id];
+			$where = ['id' => $decrypt_id,'company_id'=>$this->session->user->company_id];
 			$edit = [
 				'classification' => clean_data(ucwords($this->input->post('classification'))),
 				'allowance_per_user' => clean_data($this->input->post('allowance')),
 				'budget' => clean_data($this->input->post('budget'))
 			];
-			
-			$get_old_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
+      
+            $classification=$this->Crud_model->update('expense_classification',$edit,$where);
+            $users=$this->Crud_model->fetch('users',['company_id'=>$this->session->user->company_id]);
+              
 
-			$old_classification = $get_old_classification->classification;
-			// $this->dbforge->rename_table($old_classification->classification, $edit['classification']);
-			echo json_encode("success");
-			$modify = [
-				$old_classification => [
-					'name'	=> strtolower($edit['classification']),
-					// 'type'	=> 'varchar(100)'
-					'type'	=> 'float(8,2)'
-				],
-			];
-			$this->dbforge->modify_column('users',$modify);
-			$this->Crud_model->update('classification',$edit,$where);
+            foreach($users as $row){
+                
+                $edit_users_classification=[
+                     'remaining_reimbursement'=>clean_data($this->input->post('allowance'))
+                ];
+                $this->Crud_model->update('expense_users_classification',$edit_users_classification,['users_id'=>$row->id,'classification_id'=>$decrypt_id,'company_id'=>$this->session->user->company_id]);
+          
+
+                
+             }
+             echo json_encode("success");
 		}
 
         
@@ -252,14 +263,14 @@ class Expense extends MY_Controller {
             $this->form_validation->set_rules('receipt','Receipt','required');
         }
         
-        $where = ['id' => $this->input->post('classification')];
-        $classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
+        $where = ['id' => $this->input->post('classification'),'company_id'=>$this->session->user->company_id];
+        $classification = $this->Crud_model->fetch_tag_row('*','expense_classification',$where);
 
-        $user_where = ['id' => $this->user->info('id')];
-        $user = $this->Crud_model->fetch_tag_row('*','users',$user_where);
-
-        $classify_name = strtolower($classification->classification);
-        $user_classification_col = $user->$classify_name;
+        $user_where = ['users_id' => $this->user->info('id'),'classification_id'=>$classification->id,'company_id'=>$this->session->user->company_id];
+        // $user = $this->Crud_model->fetch_tag_row('*','users',$user_where);
+     
+        $remaining=$this->Crud_model->fetch_tag_row('*','expense_users_classification',$user_where);
+        $user_classification_col = $remaining->remaining_reimbursement;
         $amount = $this->input->post('amount');
         
         if($this->form_validation->run() == FALSE){
@@ -280,13 +291,14 @@ class Expense extends MY_Controller {
                     'classification_id' => clean_data($this->input->post('classification')),
                     'receipt'   => $this->input->post('receipt'),
                     'amount'    => $amount,
-                    'receipt_img'   => $r_img
+                    'receipt_img'   => $r_img,
+                    'company_id'=>$this->session->user->company_id
                 ];
     
-                $this->Crud_model->insert('reimbursement',$insert);
+                $this->Crud_model->insert('expense_reimbursement',$insert);
                 
                 $where = ['id' => $this->input->post('classification')];
-                $get_classification = $this->Crud_model->fetch_tag_row('*','classification',$where);
+                $get_classification = $this->Crud_model->fetch_tag_row('*','expense_classification',$where);
 
                 echo json_encode('success');
             }
@@ -311,39 +323,40 @@ class Expense extends MY_Controller {
 
     public function reject($id) {
 		$decrypt_id = secret_url('decrypt',$id);
-		$where = array('id' => $decrypt_id);
+		$where = array('id' => $decrypt_id,'company_id'=>$this->session->user->company_id);
 		$update_status = [
 			'status'	=> 0
 		];
-		$this->Crud_model->update('reimbursement',$update_status,$where);
+		$this->Crud_model->update('expense_reimbursement',$update_status,$where);
 		redirect('reimbursement');
     }
     
     public function approve($id) {
         
 		$decrypt_id = secret_url('decrypt',$id);
-        $where = array('id' => $decrypt_id);
+        $where = array('id' => $decrypt_id,'company_id'=>$this->session->user->company_id);
         
-        $reimbursement = $this->Crud_model->fetch_tag_row('*','reimbursement',$where);
+        $reimbursement = $this->Crud_model->fetch_tag_row('*','expense_reimbursement',$where);
         $update_status = [
 			'status'	=> 1
 		];
-		$this->Crud_model->update('reimbursement',$update_status,$where);
+		$this->Crud_model->update('expense_reimbursement',$update_status,$where);
         //classification table
-        $where_classify = ['id' => $reimbursement->classification_id];
-        $classification = $this->Crud_model->fetch_tag_row('*','classification',$where_classify);
+        $where_classify = ['id' => $reimbursement->classification_id,'company_id'=>$this->session->user->company_id];
+        $classification = $this->Crud_model->fetch_tag_row('*','expense_classification',$where_classify);
         $classification_name = strtolower($classification->classification);
         
         //user
-        $where_user = ['id' => $reimbursement->user_id];
-        $user = $this->Crud_model->fetch_tag_row('*','users',$where_user);
-        $less_allowance = $user->$classification_name - $reimbursement->amount;
-        $user_allowance = $user->$classification_name;
+        $where_user = ['users_id' => $reimbursement->user_id,'company_id'=>$this->session->user->company_id];
+        $user = $this->Crud_model->fetch_tag_row('*','expense_users_classification',$where_user);
+        $less_allowance = $user->remaining_reimbursement - $reimbursement->amount;
+        $user_allowance = $user->remaining_reimbursement;
         if($less_allowance < $user_allowance){
+            $where= ['classification_id'=>$classification->id,'users_id' => $reimbursement->user_id,'company_id'=>$this->session->user->company_id];
             $update_status = [
-                $classification_name => $less_allowance
+                'remaining_reimbursement'=> $less_allowance
             ];
-            $this->Crud_model->update('users',$update_status,$where_user);
+            $this->Crud_model->update('expense_users_classification',$update_status,$where_user);
             redirect('reimbursement');
         }else{
             echo "
@@ -358,14 +371,16 @@ class Expense extends MY_Controller {
     public function approve_reset() {
         $id = $this->input->post('id');
         $decrypt_id = secret_url('decrypt',$id);
-        $where = ['id' => $decrypt_id];
-        $classify = $this->Crud_model->fetch_tag_row('*','classification',$where);
+        $where = ['id' => $decrypt_id,'company_id'=>$this->session->user->company_id];
+        $classify = $this->Crud_model->fetch_tag_row('*','expense_classification',$where);
         $classify_name = strtolower($classify->classification);
         $classify_allowance = $classify->allowance_per_user;
         $update_user = [
-            $classify_name => $classify_allowance
+            'remaining_reimbursement' => $classify_allowance
         ];
 
-        $this->Crud_model->update('users',$update_user);
+        $this->Crud_model->update('expense_users_classification',$update_user,['classification_id'=>$classify->id,'company_id'=>$this->session->user->company_id]);
+
+        echo json_encode('success');
     }
 }

@@ -22,7 +22,7 @@ $config =
             [
                 'field'		=> 	'email',
                 'label'   	=> 	'Email address',
-                'rules'   	=> 	'required|valid_email|is_unique[users.email]',
+                'rules'   	=> 	'required|valid_email|is_unique[expense_users.email]',
                 'errors'    => [
                                     'is_unique' => '%s already taken.'
                                 ]
@@ -46,7 +46,7 @@ $config =
             [
                 'field'		=> 	'classification',
                 'label'   	=> 	'Classification',
-				'rules'  	=> 	'required|regex_match[/^([a-zA-Z]|\s)+$/]|is_unique[classification.classification]',
+				'rules'  	=> 	'required|regex_match[/^([a-zA-Z]|\s)+$/]|is_unique[expense_classification.classification]',
 				'errors'	=> [
 								'regex_match'	=> '%s must be letters only.',
 								'is_unique'		=> '%s is already exist.'

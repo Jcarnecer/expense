@@ -9,49 +9,40 @@ class Login extends MY_Controller {
                 'title' => 'Login',
             ]
         );
+
+     
     }
 
     public function auth() {
         
-                if($this->form_validation->run('login_validate') == FALSE) {
-                    echo json_encode(validation_errors());
-                } else {
-                    $email = clean_data($this->input->post('email'));
-                    $password = clean_data($this->input->post('password'));
-                    $where = array('email'=>$email);
-                    $get_user = $this->Crud_model->fetch_tag_row('*','users',$where);
-        
-                    if($get_user) {
-                        $check_password = $get_user->password;
-                        if(password_verify($password,$check_password)) {
-        
-                            if($get_user->status == 1) {
-                                $user_session = [
-                                    'id'        => $get_user->id,
-                                    'email'     => $get_user->email,
-                                    'firstname' => $get_user->firstname,
-                                    'lastname'  => $get_user->lastname,
-                                    'profile_picture'   => $get_user->profile_picture,
-                                ];
-                                $this->session->set_userdata('user_logged_in',$user_session);
-                                echo json_encode("success");
-                            }elseif($get_user->status == 0){
-                                echo json_encode("Your account is inactive. Contact our human resource department regarding this problem.");
-                            }
-                            
-                        }else {
-                            
-                            echo json_encode("Invalid Credentials");
-                        }
-                        
-                    }else{
-                        echo json_encode("Invalid Credentials");
-                    } 
+                  
+            if(parent::with_session()){
+                
+                return redirect('/');
+            }
+
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+                $login_details    = [
+                    "email_address" => $_POST["email_address"],
+                    "password"      => $_POST["user_password"]
+                ];
+
+                $user = $this->Crud_model->fetch('users',$login_details);
+                
+                if($user != null) {
+                    
+                    $this->session->set_userdata('user', $user);
+                    redirect('');
                 }
+            }
+
+                return $this->load->view('dashboard');
+    
             }
         
             public function logout() {
                 $this->session->sess_destroy();
-                redirect('');
+                return redirect('http://localhost/main');
             }
 }
