@@ -23,7 +23,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/expense/';
+
+
+
+switch(ENVIRONMENT) {
+
+	case 'production':
+		$config['base_url'] = 'http://expense.payakapps.com/';
+		break;
+	case 'testing':
+		$config['base_url'] = 'http://stage.payakapps.com/';
+		break;
+	default:
+		$config['base_url'] = 'http://localhost/expense/';
+		break;
+}
+
 
 /*
 |--------------------------------------------------------------------------
@@ -400,7 +415,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 |
 */
 $config['cookie_prefix']	= '';
-$config['cookie_domain']	= '';
+$config['cookie_domain']	= '.payakapps.com';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
 $config['cookie_httponly'] 	= FALSE;

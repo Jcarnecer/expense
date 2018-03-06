@@ -7,7 +7,7 @@
 				<span></span>
 			</div>
 			<a class="navbar-brand mr-auto" href="#">Payak Apps</a>
-			<a class="navbar-text" href="login/logout">Logout</a>
+			<a class="navbar-text" href="http://payakapps.com">Logout</a>
 		</nav>
 	</div>
 	<!-- <div class="container-fluid"> -->
