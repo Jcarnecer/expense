@@ -47,7 +47,7 @@ class Aws
 			'ACL' => 'public-read',
 			'Bucket' => 'payakapps.com',
 			'ContentType' => 'image/png',
-			'SourceFile' => $_FILES['reimbursement']['tmp_name'],
+			'SourceFile' => $_FILES['receipt_image']['tmp_name'],
 			'Key' => "avatar/{$reimbursement_id}.jpg"
 		]);
 
@@ -56,6 +56,7 @@ class Aws
 		$this->CI->user->update($user_id, [
 			"avatar_url" => $avatar_url
 		]);
-
+		
+	   return $result['ObjectURL'];
 	}
 }
