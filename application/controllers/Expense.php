@@ -191,7 +191,8 @@ class Expense extends MY_Controller {
                 $insert_users_classification=[
                      'users_id'=>$row->id,
                       'classification_id' =>$classification->id,
-                     'remaining_reimbursement'=>clean_data($this->input->post('allowance'))
+                     'remaining_reimbursement'=>clean_data($this->input->post('allowance')),
+                     'company_id'=>$this->session->user->company_id,
                 ];
                 $this->Crud_model->insert('expense_users_classification',$insert_users_classification);
             // $insert_allowance = [
@@ -281,7 +282,7 @@ class Expense extends MY_Controller {
                 echo json_encode('Insuffient Allowance for '. $classification->classification);
             }else{
                 if($this->input->post('receipt') == 1) {
-                    $r_img = $this->upload->data('file_name');
+                    $r_img = $this->aws->upload_receipt('file_name');
                 }else{
                     $r_img = 'noimage.png';
                 }
